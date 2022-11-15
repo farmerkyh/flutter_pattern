@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'saved_list.dart';
 
 class RandomList extends StatefulWidget {
   const RandomList({super.key});
@@ -19,6 +20,14 @@ class _RandomListState extends State<RandomList> {
     return Scaffold(
       appBar: AppBar(
         title: Text('naming app'),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                await Navigator.of(context).push(MaterialPageRoute(builder: (context) => SavedList(saved: _saved)));
+                setState(() {});
+              },
+              icon: Icon(Icons.list))
+        ],
       ),
       body: _buildList(),
     );
