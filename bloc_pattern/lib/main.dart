@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'block_pattern_010_none/random_list.dart';
+import 'block_pattern_010_no_stream/random_list.dart';
 
 void main() => runApp(MyApp());
 
