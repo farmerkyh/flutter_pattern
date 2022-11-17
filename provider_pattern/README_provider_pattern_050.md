@@ -7,6 +7,10 @@
 ## 2. Provider Pattern 사용 목적
  - 단계별로 호출 되는 Class에서 argument로 값을 넘기지 않고, Provider를 이용해서 객체를 공유해서 접근할 수 있다.
 
+## 3. Provider Pattern 불가 형태
+ - 1. 가능형태 : 한소스, 한파일, 하나의 Dart파일내부에 정의된 class들에서만 Provider Pattern형식이 공유 된다.
+ - 2. 불가현태 : 다른 Dart파일에 존재하는 Class를 호출 하는 경우에는 Provider Pattern으로 정의 했어도 공유되지 않는다.
+
 ## 3. 개발소스
  - /lib/provider_pattern_100/fish_model.dart
  - /lib/provider_pattern_100/provider_patter_100.dart
