@@ -1,21 +1,24 @@
 # Provider Pattern
-## 1. Provider Pattern 정의
+## 1. Provider Pattern 정의 
  - 객체에서 객체로 값을 넘길때 보통은 argument방식으로 객체(VO)를 넘긴다.
  - argument방식으로 객체를 넘기게 되면 소스가 지저분해 질 수 있다.
  - 이때 Provider를 이용하게 되면 argument로 넘기기 않고도  객체(VO)를 사용할 수 있다.
 
-## 2. 개발소스
+## 2. Provider Pattern 사용 목적
+ - 단계별로 호출 되는 Class에서 argument로 값을 넘기지 않고, Provider를 이용해서 객체를 공유해서 접근할 수 있다.
+
+## 3. 개발소스
  - /lib/provider_pattern_100/fish_model.dart
  - /lib/provider_pattern_100/provider_patter_100.dart
 
-## 3. 실행결과, 소스 흐름도 및 설명
+## 4. 실행결과, 소스 흐름도 및 설명
  - 실행결과
  > <img src="./README_images/provider_pattern_100.png">
 
  - 소스 흐름도 및 설명
  > <img src="./README_images/provider_pattern_100.png">
 
-## 4. 소스 상세 설명 (위 이미지를 기준으로 설명)
+## 5. 소스 상세 설명 (위 이미지를 기준으로 설명)
 ### 1. 호출 구조 (그림 1)
  - 1. MaterialApp Class에서 Scaffold Class호출
  - 2. Scaffold    Class에서  High    Class 호출
