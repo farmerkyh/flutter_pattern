@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_pattern/multiprovider_pattern_100/seafish_model.dart';
 import './fish_model.dart';
 
 void main() => runApp(const MaterialApp(home: ProviderPattern100()));
@@ -9,10 +10,40 @@ class ProviderPattern100 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //return Provider(
-    return ChangeNotifierProvider(
-      //create: (BuildContext context) {  },
-      create: (context) => FishModel(name: 'Salmon', number: 10, size: 'big'),
+    // 1. Provider를 사용할 경우
+    // return Provider(
+    //   //create: (BuildContext context) {  },
+    //   create: (context) => FishModel(name: 'Salmon', number: 10, size: 'big'),
+    //   child: const MaterialApp(
+    //     home: FishOrder(),
+    //   ),
+    // );
+    //
+    // 2. ChangeNotifierProvider : 1개만 사용 하는 예제
+    // return ChangeNotifierProvider(
+    //   //create: (BuildContext context) {  },
+    //   create: (context) => FishModel(name: 'Salmon', number: 10, size: 'big'),
+    //   child: const MaterialApp(
+    //     home: FishOrder(),
+    //   ),
+    //);
+
+    // 3. MultiProvider를 사용할 경우
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => FishModel(name: 'Salmon', number: 10, size: 'big'),
+          child: const MaterialApp(
+            home: FishOrder(),
+          ),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SeaFishModel(name: 'Tuna', tunaNumber: 0, size: 'middle'),
+          child: const MaterialApp(
+            home: FishOrder(),
+          ),
+        ),
+      ],
       child: const MaterialApp(
         home: FishOrder(),
       ),
@@ -108,15 +139,21 @@ class SpicyB extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'number: ${Provider.of<FishModel>(context).number}', //주문한 생선 수량
+          'Tuna number: ${Provider.of<SeaFishModel>(context).tunaNumber}', //주문한 생선 수량
           style: const TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
         Text(
-          'size: ${Provider.of<FishModel>(context).size}', //주문한 생선의 size
+          'size: ${Provider.of<SeaFishModel>(context).size}', //주문한 생선의 size
           style: const TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 20),
-        const Low()
+        ElevatedButton(
+          onPressed: () {
+            Provider.of<SeaFishModel>(context, listen: false).changeSeaFishNumber();
+          },
+          child: const Text('Sea fish number 증가'),
+        ),
+        const Low(),
       ],
     );
   }

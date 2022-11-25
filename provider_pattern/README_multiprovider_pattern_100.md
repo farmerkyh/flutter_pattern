@@ -1,3 +1,4 @@
+
 # FishModel
  - FishModel class의 값이 변경 되었을 때 이 Data와 관련있는 다른 위젯들에게    
    자동으로 이 사실을 열려 줄 수 있느냐가 관건 이고,    
@@ -42,14 +43,33 @@
 
 ### 3.2 필요이유
   1. 만약, 여러 개의 Provider가 계층구조를 이룬다면 아래와 같은 구조일 것이다.
-  
-//       Provider (
-//           
-//       )
-//    
-//    
-//    
-//    
-//    
-//    
-//  
+```dart
+  Provider (
+    create: (context) => ModelA(),
+    child: Provider(
+      create: (context) => ModelB(),
+      child: Provider (
+        create(context) => ModelC(),
+        child: MaterialApp(),
+      )
+    )
+  );
+```
+  2. 위와 같이 다중  Provider 가 존재 할 경우에 가독성이 떨어진다.    
+  3. 그래서 MultiProvider를 사용해야 된다.
+```dart
+ MultiProvider (
+  providers: [
+    Provider(create: (context) => SpciyA)),
+    Provider(create: (context) => SpicyB)),
+    Provider(create: (context) => SpicyC)),
+  ],
+  child: MaterialApp(),
+ )
+```
+
+# 4. MultiProvider 소스에 대한 class 구조도
+ > <img src="./README_images/multiprovider_patterh_100_1.png">
+
+
+- 참고 URL : https://www.youtube.com/watch?v=de6tAJS2ZG0
