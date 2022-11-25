@@ -1,3 +1,5 @@
+# 아래설명에 대한 Main source
+> https://github.com/farmerkyh/flutter_pattern/blob/master/provider_pattern/lib/multiprovider_pattern_100/multiprovider_patterh_100.dart
 
 # FishModel
  - FishModel class의 값이 변경 되었을 때 이 Data와 관련있는 다른 위젯들에게    
@@ -10,7 +12,8 @@
   - ChangeNotifier내부에 notifyListeners라는 메소드가 존재 한다.
   - 이 메소드를 호출 하면 ChangeNotifier 클래스를 listen 하고 있는 모든 위젯들에게   
      Data가 변경 될 때마다 변경 사실을 알려 줄 수 있다.
-  - 그럼 어떻게 하면 변경사실을 알 수 있도록 listen할 수 있을까?  addListener method이용
+  - 그럼 어떻게 하면 변경된 사실을 원하는 Widget들에게 알 수 있도록 listen할 수 있을까?     
+     addListener method이용
 
 ### 1.2 addListener method
   - addListener method를 호출해서 특정 Data가 변경 되었을때 listener Widget이 되도록 한다.
@@ -31,9 +34,9 @@
  - ChangeNotifier의 단점을 보완하기 위해서 만들어 졌다.
 
 ### 1.2 장점
- 1. 모든 위젯들이 listen할 수 있는 ChagneNotifier인스턴스 생성    
- 2. 자동으로 필요 없는 ChagneNotifier제거    
- 3. Provider.of를 통해서 위젯들이 쉽게 ChagneNotifier인스턴스에 접근할 수 있게 해준다.    
+ 1. 모든 위젯들이 listen할 수 있는 ChangeNotifier인스턴스 생성    
+ 2. 자동으로 필요 없는 ChangeNotifier제거    
+ 3. Provider.of를 통해서 위젯들이 쉽게 ChangeNotifier인스턴스에 접근할 수 있게 해준다.    
  4. 필용시 UI를 리빌드 시켜줄 수 있다.    
  5. 굳이 UI리빌드 할 필요가 없는 위젯을 위해서 listen:false기능을 제공 한다.    
 
@@ -45,11 +48,11 @@
   1. 만약, 여러 개의 Provider가 계층구조를 이룬다면 아래와 같은 구조일 것이다.
 ```dart
   Provider (
-    create: (context) => ModelA(),
+    create: (context) => SpciyA(),
     child: Provider(
-      create: (context) => ModelB(),
+      create: (context) => SpicyB(),
       child: Provider (
-        create(context) => ModelC(),
+        create(context) => SpicyC(),
         child: MaterialApp(),
       )
     )
@@ -72,4 +75,4 @@
  > <img src="./README_images/multiprovider_patterh_100_1.png">
 
 
-- 참고 URL : https://www.youtube.com/watch?v=de6tAJS2ZG0
+- 참고 URL : https://www.youtube.com/watch?v=de6tAJS2ZG0  (코딩세프)
