@@ -2,23 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './fish_model.dart';
 
-//void main() => runApp(const MyApp());
+void main() => runApp(const MaterialApp(home: ProviderPattern100()));
 
 class ProviderPattern100 extends StatelessWidget {
   const ProviderPattern100({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //-------------------------------------------------------------------------------------
-    //Provider pattern
-    //1. MaterialApp을 Provider widget의 child로 감싼다.
-    //   - 이로써 MaterialApp하위 모든 위젯에서 FishModel instance에 접근을 할 수 있게 된다.
-    //   - 즉, 자료를 넘겨줄 수로가 생기는 것이다.
-    //2. (constext) 를 ....
-    //3. create:
-    //   - create: 를 통해서 FishModel클래스를 넘겨주게 된다. 즉, 사용할 수 있게 해준다.
-    //-------------------------------------------------------------------------------------
-    return Provider(
+    //return Provider(
+    return ChangeNotifierProvider(
       //create: (BuildContext context) {  },
       create: (context) => FishModel(name: 'Salmon', number: 10, size: 'big'),
       child: const MaterialApp(
@@ -165,6 +157,14 @@ class SpicyC extends StatelessWidget {
           style: const TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 20),
+        ElevatedButton(
+            onPressed: () {
+              //listen: false
+              //  - ElevatedButton는 rebuild할 필요가 없어서 설정
+              //  - 이 속성을 정의 하지 않으면 오류 발생
+              Provider.of<FishModel>(context, listen: false).changeFishNumber();
+            },
+            child: const Text('Changed Fish Model'))
       ],
     );
   }
