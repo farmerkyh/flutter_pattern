@@ -13,7 +13,7 @@
   - 이 메소드를 호출 하면 ChangeNotifier 클래스를 listen 하고 있는 모든 위젯들에게   
      Data가 변경 될 때마다 변경 사실을 알려 줄 수 있다.
   - 그럼 어떻게 하면 변경된 사실을 원하는 Widget들에게 알 수 있도록 listen할 수 있을까?     
-     addListener method이용
+    . 즉, 많은 Widget들중 누구에게 알려줄것인가? 를 지정하는게 addListener method가 있다.
 
 ### 1.2 addListener method
   - addListener method를 호출해서 특정 Data가 변경 되었을때 listener Widget이 되도록 한다.
@@ -37,7 +37,7 @@
  1. 모든 위젯들이 listen할 수 있는 ChangeNotifier인스턴스 생성    
  2. 자동으로 필요 없는 ChangeNotifier제거    
  3. Provider.of를 통해서 위젯들이 쉽게 ChangeNotifier인스턴스에 접근할 수 있게 해준다.    
- 4. 필용시 UI를 리빌드 시켜줄 수 있다.    
+ 4. 필요시 UI를 리빌드 시켜줄 수 있다.    
  5. 굳이 UI리빌드 할 필요가 없는 위젯을 위해서 listen:false기능을 제공 한다.    
 
 # 3. MultiProvider
