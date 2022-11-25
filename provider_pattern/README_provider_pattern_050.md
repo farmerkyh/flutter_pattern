@@ -9,7 +9,7 @@
 
 ## 3. Provider Pattern 불가 형태
  - 1. 가능형태 : 한소스, 한파일, 하나의 Dart파일내부에 정의된 class들에서만 Provider Pattern형식이 공유 된다.
- - 2. 불가현태 : 다른 Dart파일에 존재하는 Class를 호출 하는 경우에는 Provider Pattern으로 정의 했어도 공유되지 않는다.
+ - 2. 불가형태 : 다른 Dart파일에 존재하는 Class를 호출 하는 경우에는 Provider Pattern으로 정의 했어도 공유되지 않는다.
 
 ## 4. 개발소스
  - /lib/provider_pattern_100/fish_model.dart
@@ -20,7 +20,7 @@
  > <img src="./README_images/provider_pattern_100.png">
 
  - 소스 흐름도 및 설명
- > <img src="./README_images/provider_pattern_100.png">
+ > <img src="./README_images/provider_pattern_110.png">
 
 ## 6. 소스 상세 설명 (위 이미지를 기준으로 설명)
 ### 1. 호출 구조 (그림 1)
