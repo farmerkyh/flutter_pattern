@@ -10,7 +10,8 @@
 ### 2. 정의 및 특징, Topic
  - Provider 는 상태관리자의 기본이다.
  <img src="./README_images/provider_pattern_030.png">
- 1. Why Provider : 왜 provider를 해야 되나
+ 
+ 1. Why Provider : 왜 provider를 해야 되나    
  2. Accessing data easily : provider를 이용해서 어떻게 widget tree에서 쉽게 data를 access할 것인지 알아보기
  3. Listening to changes in data : widget tree에서 어떻게 data 변경에 대해 listen하는지 알아보기
  4. ChangeNofierProvider : 
