@@ -10,7 +10,7 @@
 ### 2. 정의 및 특징, Topic
  - Provider 는 상태관리자의 기본이다.
  <img src="./README_images/provider_pattern_030.png">
- 
+
  1. Why Provider : 왜 provider를 해야 되나    
  2. Accessing data easily : provider를 이용해서 어떻게 widget tree에서 쉽게 data를 access할 것인지 알아보기
  3. Listening to changes in data : widget tree에서 어떻게 data 변경에 대해 listen하는지 알아보기
@@ -27,7 +27,7 @@
  14. addPostFrameCallback : 
  15. on-time action* & addListener of ChangeNotifier : stat에 변화가 생겼을 때 widget을 rebuild하는 것이 아니라, showdialog나 Navigator.push...등과 같은 action을 ChangeNotifier의 addListener를 활용해 처리하는 방법 알아보기
 
- 추가사항
+ * 추가사항    
  16. StateNotifier and StateNotifierProvider : 
 
 
@@ -49,7 +49,7 @@
 ```
 <img src="./README_images/provider_pattern_WhyProvider_100.png">
 
-# 2. Counter App만들기 (step1) - Provider미사용
+# 2. Counter App만들기 (step1) - Provider 미사용
 ### 1. 정의
  - Provider를 사용하지 않은 counter개발소스 app
 
@@ -80,6 +80,7 @@
  3. 다른말로, Business와 Logic을 불리한다 하고도 한다.
     . (BLOC : Business LOgic Component)
  4. Provider를 정의한 상위 Widget에서는 하위 Provider를 사용할 수 없다.
+ 5. Provider도 Widget이다.
 <img src="./README_images/provider_pattern_step2_provider_100.png">
 
 ### 3. 개발필요사항
@@ -87,10 +88,41 @@
  
 ### 4. 소스 Widget Tree
 <img src="./README_images/provider_pattern_step2_provider_110.png">
+ 
+ 1. Dos class의 데이터 및 Method를 여러 Widget들에서 필요로 하고 있다.
+ 2. 사용되고 있는 Widget들의 공통되는 최상위(Parent)에 Provider를 추가한다.
 
+### 5. Provider 기본 문법
+1. Provider Constructor
+```dart
+  Provider({
+    Key? key,
+    required Create<T> create,      <<--required
+    Dispose<T>? dispose,
+    bool? lazy,
+    TransitionBuilder? builder,
+    Widget? child,
+  })
+```
 
-
-
+### 6. Provider 개발 진행 과정
+ 1. Provider 선언
+    - 사용되고 있는 Widget들의 공통되는 최상위(Parent)에 Provider를 추가한다.... 라고 했는데    
+      개발 되는 소스들을 보면 실제적으로 정의 하는 소스 위치는 공통되는 최상위Widget의 상위이다.
+    - 그러면서 Provider() widget의 Child로 공통되는 최상위 Widget을 위치시키는 구성으로 되어 있다.
+```dart
+class MyApp extends StatelessWidget {
+  ...
+  Widget build(BuildContext context) {
+    return Provider<Dog>(
+      create: (context) => Dog(name: 'Sun',breed: 'Bulldog',age: 3),
+      child: MaterialApp(....
+        home: const MyHomePage(),
+      ),
+    );
+  }
+}
+```
 
 
 # 3. TO DO App 만들기 (step1)
