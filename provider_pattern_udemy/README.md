@@ -67,7 +67,7 @@
  5. Widget Tree의 depth가 길어지만 method및 데이터를 계속 전달시켜줘야 된다.
 
 
-# 3. Counter App만들기 (step2) - Provider 사용
+# 3. Dog App만들기 (step2) - Provider 사용 - (ChangeNotifier 미사용)
 ### 1. 상태관리(State Management) 정의
  1. Dependency Injection기능 사용하기
     - Object를 Widget tree상에서 쉽게 access할 수 있도록 해주는 기능이다.   
@@ -92,7 +92,7 @@
  1. Dos class의 데이터 및 Method를 여러 Widget들에서 필요로 하고 있다.
  2. 사용되고 있는 Widget들의 공통되는 최상위(Parent)에 Provider를 추가한다.
 
-### 5. Provider 기본 문법
+### 5. Provider 기본 문법 - (ChangeNotifier 미사용)
 1. Provider Constructor
 ```dart
   Provider({
@@ -106,7 +106,27 @@
 ```
 
 ### 6. Provider 개발 진행 과정
- 1. Provider 선언
+ 1. 하위 Widget들에게 전달하고 싶은 Model 정의
+```dart
+class Dog {
+  final String name;
+  final String breed;
+  int age;
+
+  Dog({
+    required this.name,
+    required this.breed,
+    this.age = 1,
+  });
+
+  void grow() {
+    age++;
+    notifyListeners();
+  }
+}
+```
+
+ 2. Provider 선언
     - 사용되고 있는 Widget들의 공통되는 최상위(Parent)에 Provider를 추가한다.... 라고 했는데    
       개발 되는 소스들을 보면 실제적으로 정의 하는 소스 위치는 공통되는 최상위Widget의 상위이다.
     - 그러면서 Provider() widget의 Child로 공통되는 최상위 Widget을 위치시키는 구성으로 되어 있다.
@@ -123,6 +143,56 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+
+ 3. 하위 Widget에서 Provider기능 사용하기
+   - Provider에는 of라는 static함수가 존재 한다.
+   - 이 of함수는 Widget tree를 위로 traverse 하면서 원하는 type의 instance를 찾아서 주는 역할을 담당한다.   
+     그래서 of함수에는 찾고자 하는 Type의 instance를 줘야 된다.    
+   - of함수의 argument로는 context를 줘야 된다.
+     context를 주는 이유는 context를 통해 Widget tree를 위로 탐색해야 되기 때문이다.
+   - Provider.of<Dog>(context) : 와 같이 기술하게 되면 Dog class의 instance를 제공해 준다.
+   - Provider.of<T>(context) : T type의 instance를 제공해 준다.
+
+```dart
+ Text('- name: ${Provider.of<Dog>(context).name}'), 
+```
+
+  4. [grow]버튼을 눌러도 화면에는 아직 나이가 올라가지 않는다.
+
+# 4. Dog App만들기 (step3) - (Provider 미사용 )- (ChangeNotifier 사용)
+ 1. Provider를 사용하지 않았기 때문에 Dog instance를 필요한 Widget들에게 argument로 넘겨 주고 있다.
+
+ 2. ChangeNotifier 상속받아 사용하기
+  - notifyListeners()라는 void method : 를 기술하게 되면 
+  - ChangeNotifier에 의해 상속받은 class의 값이 변동 되었을때,   
+    notifyListeners()라는 void method를 호출하게 되면      
+    ChangeNotifier를 listen하고 있는 모든 Widget들에게 변동사항을 알려준다.   
+  - listener 등록방법   
+    . ChangeNotifier에는 addListener()를 method가 있는데 이 method를 통해 callback함수를 등록하면 된다.   
+    . 이렇게 callback함수로 등록 되면 ChangeNotifier로 상속받은 class가 변경이 되면      
+      매번 호출 하게 된다.   
+  - addListener() 주의사항   
+    . Widget이 종료 될때 listen하고 있는 widget들이 자동으로 dispose되지 않기 때문에 반드시 dispose를 해줘야 된다.    
+    . removeListener() method를 이용한다.  
+
+ <img src="./README_images/provider_pattern_step3_provider_100.png">
+
+ 3. [grow]버튼을 눌러도 화면에는 아직 나이가 올라가지 않는다.
+
+ 4. 주요소스
+    - 이 챕터의 주요소스는 다음챕터에서 처리
+    - 이 챕터는 다음 챕터를 개발하기 위한 지나가는 과정 이기 때문에 소스는 기술하지 않겠다.
+
+# 4. Dog App만들기 (step4) - (ChangeNotifierProvider 사용)
+
+
+
+
+
+
+
+
+
 
 
 # 3. TO DO App 만들기 (step1)

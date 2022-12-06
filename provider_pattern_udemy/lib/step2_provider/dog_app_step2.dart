@@ -89,6 +89,7 @@ class Age extends StatelessWidget {
         const SizedBox(height: 20.0),
         ElevatedButton(
           onPressed: () => Provider.of<Dog>(context, listen: false).grow(),
+          //onPressed: () => Provider.of<Dog>(context).grow(),
           child: const Text('Grow', style: TextStyle(fontSize: 20.0)),
         ),
       ],
