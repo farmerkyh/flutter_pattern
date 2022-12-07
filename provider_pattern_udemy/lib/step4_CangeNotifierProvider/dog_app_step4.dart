@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Provider 04'),
+        title: const Text('Provider 04'),
       ),
       body: Center(
         child: Column(
@@ -47,10 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Text(
               '- name: ${Provider.of<Dog>(context).name}',
-              style: TextStyle(fontSize: 20.0),
+              style: const TextStyle(fontSize: 20.0),
             ),
-            SizedBox(height: 10.0),
-            BreedAndAge(),
+            const SizedBox(height: 10.0),
+            const BreedAndAge(),
           ],
         ),
       ),
@@ -69,10 +69,10 @@ class BreedAndAge extends StatelessWidget {
       children: [
         Text(
           '- breed: ${Provider.of<Dog>(context).breed}',
-          style: TextStyle(fontSize: 20.0),
+          style: const TextStyle(fontSize: 20.0),
         ),
-        SizedBox(height: 10.0),
-        Age(),
+        const SizedBox(height: 10.0),
+        const Age(),
       ],
     );
   }
@@ -89,15 +89,12 @@ class Age extends StatelessWidget {
       children: [
         Text(
           '- age: ${Provider.of<Dog>(context).age}',
-          style: TextStyle(fontSize: 20.0),
+          style: const TextStyle(fontSize: 20.0),
         ),
-        SizedBox(height: 20.0),
+        const SizedBox(height: 20.0),
         ElevatedButton(
           onPressed: () => Provider.of<Dog>(context, listen: false).grow(),
-          child: Text(
-            'Grow',
-            style: TextStyle(fontSize: 20.0),
-          ),
+          child: const Text('Grow', style: TextStyle(fontSize: 20.0)),
         ),
       ],
     );

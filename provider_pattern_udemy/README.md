@@ -184,6 +184,22 @@ class MyApp extends StatelessWidget {
     - 이 챕터는 다음 챕터를 개발하기 위한 지나가는 과정 이기 때문에 소스는 기술하지 않겠다.
 
 # 4. Dog App만들기 (step4) - (ChangeNotifierProvider 사용)
+ 1. 작업과정
+   . 첫번째, ChangeNotifier의 인스턴스를 만든다.
+   . 두번째, ChangeNotifier를 필요로하는 Widget에 ChangeNotifier를 쉽게 access할 수 있는 수단을 제공하고 필요하면 UI를 rebild한다.
+ <img src="./README_images/provider_pattern_step4_CangeNotifierProvider_100.png">
+
+ 2. 추가상세내용
+   . 첫번째, ChangeNotifier의 인스턴스를 만든다.
+      - ChangeNotifier의 인스턴스를 필요할 때 만든다.
+      - ChangeNotifier가 필요없을 경우 Memory에서 없애 준다.
+   . 두번째, ChangeNotifier를 필요로하는 Widget에 ChangeNotifier를 쉽게 access할 수 있는 수단을 제공
+      - Constructor를 통해 instance를 전달할 필요 없이 Provider.of를 통해서 ChangeNotifier의 instance에 쉽게 access할 수 있다.
+      - type T의 instance를 access할 때 2가지 방법으로 access할 수 있다.
+        1. Provide.of<T>(context)를 통해서는 type T의  ChangeNotifier instance의 변화를 listen해서 변화가 있으면 UI를 rebuild할 수 있다.
+        2. Provide.of<T>(context, listen:false) 를 통해서는 ChangeNotifier instance를 access만 하고, 변화를 listen하지 않는다. 즉, 해당 UI를 rebuild하지 않는다.
+ <img src="./README_images/provider_pattern_step4_CangeNotifierProvider_110.png">
+
 
 
 
