@@ -184,12 +184,12 @@ class MyApp extends StatelessWidget {
     - 이 챕터는 다음 챕터를 개발하기 위한 지나가는 과정 이기 때문에 소스는 기술하지 않겠다.
 
 # 4. Dog App만들기 (step4) - (ChangeNotifierProvider 사용)
- 1. 작업과정
+### 1. 작동과정
    . 첫번째, ChangeNotifier의 인스턴스를 만든다.
    . 두번째, ChangeNotifier를 필요로하는 Widget에 ChangeNotifier를 쉽게 access할 수 있는 수단을 제공하고 필요하면 UI를 rebild한다.
  <img src="./README_images/provider_pattern_step4_CangeNotifierProvider_100.png">
 
- 2. 추가상세내용
+### 2. 추가 작동과정 상세내용
    . 첫번째, ChangeNotifier의 인스턴스를 만든다.
       - ChangeNotifier의 인스턴스를 필요할 때 만든다.
       - ChangeNotifier가 필요없을 경우 Memory에서 없애 준다.
@@ -200,10 +200,93 @@ class MyApp extends StatelessWidget {
         2. Provide.of<T>(context, listen:false) 를 통해서는 ChangeNotifier instance를 access만 하고, 변화를 listen하지 않는다. 즉, 해당 UI를 rebuild하지 않는다.
  <img src="./README_images/provider_pattern_step4_CangeNotifierProvider_110.png">
 
+### 3. ChangeNotifierProvider 개발 진행 과정
+ 1. Dog Model
+```dart
+  class Dog with ChangeNotifier {
+    final String name;
+    final String breed;
+    int age;
+    Dog({
+      required this.name,
+      required this.breed,
+      this.age = 1,
+    });
 
+    void grow() {
+      age++;
+      notifyListeners();
+    }
+  }
+```
 
+ 2. ChangeNotifierProvider 정의 하기
+```dart
+  class MyApp extends StatelessWidget {
+    ...
+    Widget build(BuildContext context) {
+      //ChangeNotifierProvider<Dog>
+      //   - MaterialApp Widget안에 모든 Widget에서 Dog instance를 access할 수 있다.
+      //   - 또한 데이터가 변경 시 rebuild를 할 수 있다.
+      return ChangeNotifierProvider<Dog>(
+        create: (context) => Dog(name: 'dog04', breed: 'breed04'),
+        child: MaterialApp(
+          ...
+          home: const MyHomePage(),
+        ),
+      );
+    }
+  }
+```
 
+ 3. Dog instance를 하위 Widget에서 사용하기
+  - Dog.name은 한번 화면에 보여준 후 변경되지 않기 때문에 해당 Widget은 rebuild될 필요가 없다.   
+    그래서, listen:false 속성을 적용해서 Dog class의 값이 변경 되어도(notifyListeners()이 호출되어도)   
+    listen하지 않겠다고 정의한 것이다.
+```dart
+  class BreedAndAge extends StatelessWidget {
+    ....
+    Text( '- name: ${Provider.of<Dog>(context, listen: false).name}',
+    ...
+  }
+```
 
+ 4. Dog instance값을 변영하고, 를 하위 Widget에서 사용하기
+  - age는 변경 시 해당 Widget tree는 rebuild되어야 한다.
+  - 그래서, listen:true(defalt)속성처리를 해준다.   
+    이로써, Age class는 listener가 되는 것이다.
+  - Grow 버튼을 누르면 grow() method를 수행하고, notifyListeners()이 호출되어
+  - listen하고 있는 Widget tree들을 rebuild하게 된다.
+```dart
+  class Age extends StatelessWidget {
+    ....
+    Widget build(BuildContext context) {
+          Text('- age: ${Provider.of<Dog>(context).age}'),
+          ElevatedButton(
+            onPressed: () => Provider.of<Dog>(context, listen: false).grow(),
+            child: const Text('Grow', style: TextStyle(fontSize: 20.0)),
+    ...
+  }
+```
+
+# 5. Dog App만들기 (step5) - (Provider - Extension method)
+ - [ [참고소스](./step5_ProviderExtensionMethod/dog_app_step5.dart) ]
+### 1. 정의
+  - Provider는 BuildContext를 Extend한 method를 포함한다.
+  - BuildContext는 Widget Tree상에서 Widget의 위치에 대한 reference를 가지고 있는 Object이다.
+    이 reference를 통해서 Widget tree위를 처다 볼 수 있다.   
+    즉. Widget Tree상에서 type T를 찾는 행위가 가능한것이다.
+<img src="./README_images/provider_pattern_step5_ProviderExtensionMethod_100.png">
+    
+### 2. Extendsion method
+ 1. context.read<T>() -> T
+    - Provider.of<T>(context, listen:false) 와 동일한 기능이다.
+ 2. context.watch<T>() -> T
+    - Provider.of<T>(context) 와 동일한 기능이다.
+    - context.watch는 값 하나만 변경되어서 listen하고 있는 Widget은 모두 rebuild하게 된다.
+ 3. context.select<T,R>(R selector(T value)) -> R
+    - 속성을 많이 가지고 있는 instance에서 특정 Property들만의 변화만 listen하고 싶을 경우에 사용한다.
+    - context.select는 정의된 Property만 변경 될때 Widget이 rebuild하게 된다. (즉, 선별되어 rebuild된다.)
 
 
 
