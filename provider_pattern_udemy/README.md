@@ -1,4 +1,4 @@
-# 1. Provider 정의
+# 0. Provider 정의
 ### 1. 강의
  - udemy.com
  - 조상욱강사 ()
@@ -49,7 +49,9 @@
 ```
 <img src="./README_images/provider_pattern_WhyProvider_100.png">
 
-# 2. Counter App만들기 (step1) - Provider 미사용
+# 1. Counter App만들기 (step1) - Provider 미사용
+ - [ [참고소스](./lib/step1_counter_app/counter_app_step1.dart) ]
+
 ### 1. 정의
  - Provider를 사용하지 않은 counter개발소스 app
 
@@ -67,7 +69,9 @@
  5. Widget Tree의 depth가 길어지만 method및 데이터를 계속 전달시켜줘야 된다.
 
 
-# 3. Dog App만들기 (step2) - Provider 사용 - (ChangeNotifier 미사용)
+# 2. Dog App만들기 (step2) - Provider 사용 - (ChangeNotifier 미사용)
+ - [ [참고소스](./lib/step2_Provider/dog_app_step2.dart) ]
+
 ### 1. 상태관리(State Management) 정의
  1. Dependency Injection기능 사용하기
     - Object를 Widget tree상에서 쉽게 access할 수 있도록 해주는 기능이다.   
@@ -159,7 +163,9 @@ class MyApp extends StatelessWidget {
 
   4. [grow]버튼을 눌러도 화면에는 아직 나이가 올라가지 않는다.
 
-# 4. Dog App만들기 (step3) - (Provider 미사용 )- (ChangeNotifier 사용)
+# 3. Dog App만들기 (step3) - (Provider 미사용 )- (ChangeNotifier 사용)
+- [ [참고소스](./lib/step3_ChangeNotifier/dog_app_step3.dart) ]
+
  1. Provider를 사용하지 않았기 때문에 Dog instance를 필요한 Widget들에게 argument로 넘겨 주고 있다.
 
  2. ChangeNotifier 상속받아 사용하기
@@ -184,6 +190,8 @@ class MyApp extends StatelessWidget {
     - 이 챕터는 다음 챕터를 개발하기 위한 지나가는 과정 이기 때문에 소스는 기술하지 않겠다.
 
 # 4. Dog App만들기 (step4) - (ChangeNotifierProvider 사용)
+ - [ [참고소스](./lib/step4_CangeNotifierProvider/dog_app_step4.dart) ]
+
 ### 1. 작동과정
    . 첫번째, ChangeNotifier의 인스턴스를 만든다.
    . 두번째, ChangeNotifier를 필요로하는 Widget에 ChangeNotifier를 쉽게 access할 수 있는 수단을 제공하고 필요하면 UI를 rebild한다.
@@ -270,7 +278,9 @@ class MyApp extends StatelessWidget {
 ```
 
 # 5. Dog App만들기 (step5) - (Provider - Extension method)
- - [ [참고소스](./step5_ProviderExtensionMethod/dog_app_step5.dart) ]
+ - [ [참고소스-dog model](./lib/step5_ProviderExtensionMethod/models/dog.dart) ]
+ - [ [참고소스-main](./lib/step5_ProviderExtensionMethod/dog_app_step5.dart) ]
+ 
 ### 1. 정의
   - Provider는 BuildContext를 Extend한 method를 포함한다.
   - BuildContext는 Widget Tree상에서 Widget의 위치에 대한 reference를 가지고 있는 Object이다.
@@ -281,16 +291,66 @@ class MyApp extends StatelessWidget {
 ### 2. Extendsion method
  1. context.read<T>() -> T
     - Provider.of<T>(context, listen:false) 와 동일한 기능이다.
+    - 해당 instance가 변경 되어도 listen하지 않는다.
  2. context.watch<T>() -> T
     - Provider.of<T>(context) 와 동일한 기능이다.
+    - 해당 instance가 변경 되면 listen한다.
     - context.watch는 값 하나만 변경되어서 listen하고 있는 Widget은 모두 rebuild하게 된다.
  3. context.select<T,R>(R selector(T value)) -> R
     - 속성을 많이 가지고 있는 instance에서 특정 Property들만의 변화만 listen하고 싶을 경우에 사용한다.
     - context.select는 정의된 Property만 변경 될때 Widget이 rebuild하게 된다. (즉, 선별되어 rebuild된다.)
 
+### 3. Widget tree와 실행화면
+ - ChangeNotifierProvider 정의
+```dart
+  class MyApp extends StatelessWidget {
+    …….
+    Widget build(BuildContext context) {
+      return ChangeNotifierProvider<Dog>(
+        create: (context) => Dog(name: 'dog05', breed: 'breed05', age: 3),
+        child: MaterialApp(
+          home: const MyHomePage(),
+    …….
+  }
+```
+##### 1. Widget tree
+<img src="./README_images/provider_pattern_step5_ProviderExtensionMethod_110.png">
+
+##### 2. 실행화면
+<img src="./README_images/provider_pattern_step5_ProviderExtensionMethod_120.png">
+ 1. [2. Extendsion method] 설명을 보면    
+    read는 처음 한번만 읽고 lesten하지 않고,   
+    watch는 변경사항을 계속 listen하고 있고,     
+    select는 명시한 하나의 항목만 listen하고 있다고 했다.
+ 2. 하지만 위 실행하면을 보면 다르게 나온다.
+ 3. [NameFirst] cass에서, read, watch 2개 Text Widget을 출력해보면 동일하게 Watch하고 있다.    
+    이건 Text, read, watch, ChangeNotifierProvider 의 특징인데.. 아직 정확하게는 어느것때문에 이렇게 동작하는지 모르겠다.
+    `하지만 한가지 명확한 건 watch로 구성된 Class(Widget)는 전체 rebuild된다.`
+    `그래서, NameFirst class에서 dog.name이 동일하게 보여진다.`
+ 4. [NameSecond] class는 [MyHomePage, NameFirst] class 두 곳에서 불려지고 있다.    
+    이렇게 개발할 일은 거의 없지만, 테스트 해보려고 구성해 봤다.   
+ 5. 위 3번에서 watch method에 의해 name이 변경 되면 rebuild 된다고 했다.   
+    그런데, `[MyHomePage] class에서 child인 [NameSecond]는 rebuild되지 않는다.`   
+    그래서 [NameSecond]안에 있는 dog.name은 read method의 해서 초기 한번만 보여주고,   
+    변경된 name은 반영되지 않는다.
 
 
+# 6. Dog App만들기 (step6) - (FutureProvider 사용하기)
+### 1. MultiProvider
+ <img src="./README_images/provider_pattern_step6_MultiProvider_100.png">
+ - SyntacticSugar 용어 : 기능적으로 동일한데, 문법적으로 좀더 쉽게 재 표현한 스크립트를 말한다.
 
+### 2. FutureProvider
+ <img src="./README_images/provider_pattern_step6_FutureProvider_100.png">
+ - FutureBuilder와 유사한 기능으로 동작한다.
+ - FutureProvider는 두번 build된다.
+    . init 시점
+    . 리져브드(?) 될때
+ - 만약, 여러게의 연속적인 값에 의해 rebuild하고 싶다면 StreamProvider를 사용한다.
+ - error가 발생할 수 있을 경우에는 error method를 제공해야 된다.
+ 
+# 7. Dog App만들기 (step7) - (StreamProvider 사용하기)
+ 
 
 
 
