@@ -357,7 +357,7 @@ class MyApp extends StatelessWidget {
 ### 6-1. MultiProvider
  <img src="./README_images/provider_pattern_step6_MultiProvider_100.png">
 
- - SyntacticSugar 용어 : 기능적으로 동일한데, 문법적으로 좀더 쉽게 재 표현한 스크립트를 말한다.
+ - SyntacticSugar란 : (용어)기능적으로 동일한데, 문법적으로 좀더 쉽게 재 표현한 스크립트를 말한다.
 
 ### 6-2. FutureProvider
  <img src="./README_images/provider_pattern_step6_FutureProvider_100.png">

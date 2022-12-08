@@ -30,19 +30,18 @@ class MyApp extends StatelessWidget {
         FutureProvider<int>(
           initialData: 1,
           create: (context) {
-            final int dogAge = context.read<Dog>().age;
-            //final int dogAge = context.watch<Dog>().age;
+            //final int dogAge = context.read<Dog>().age;
+            final int dogAge = context.watch<Dog>().age;
             final babies = Babies(age: dogAge);
             return babies.getBabies();
           },
+          lazy: false, //default=true
         ),
       ],
       child: MaterialApp(
         title: 'Provider 06',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: ThemeData(primarySwatch: Colors.blue),
         home: const MyHomePage(),
       ),
     );
@@ -68,10 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              '- name: ${context.watch<Dog>().name}',
-              style: const TextStyle(fontSize: 20.0),
-            ),
+            Text('- name: ${context.watch<Dog>().name}', style: const TextStyle(fontSize: 20.0)),
             const SizedBox(height: 10.0),
             const BreedAndAge(),
           ],
@@ -90,10 +86,7 @@ class BreedAndAge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          '- breed: ${context.select<Dog, String>((Dog dog) => dog.breed)}',
-          style: const TextStyle(fontSize: 20.0),
-        ),
+        Text('- breed: ${context.select<Dog, String>((Dog dog) => dog.breed)}', style: const TextStyle(fontSize: 20.0)),
         const SizedBox(height: 10.0),
         const Age(),
       ],
@@ -112,10 +105,7 @@ class Age extends StatelessWidget {
     debugPrint('Age build---');
     return Column(
       children: [
-        Text(
-          '- age: ${context.select<Dog, int>((Dog dog) => dog.age)}',
-          style: const TextStyle(fontSize: 20.0),
-        ),
+        Text('- age: ${context.select<Dog, int>((Dog dog) => dog.age)}', style: const TextStyle(fontSize: 20.0)),
         // Consumer<Dog>(builder: (context, Dog dog, _) {
         //   return Text(
         //     '- age: ${context.select<Dog, int>((Dog dog) => dog.age)}',
