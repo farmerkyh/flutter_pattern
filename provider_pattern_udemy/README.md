@@ -200,8 +200,8 @@ class MyApp extends StatelessWidget {
  - [ [참고소스](./lib/step4_CangeNotifierProvider/dog_app_step4.dart) ]
 
 ### 4-1. 작동과정
-  - 첫번째, ChangeNotifier의 인스턴스를 만든다.
-  - 두번째, ChangeNotifier를 필요로하는 Widget에 ChangeNotifier를 쉽게 access할 수 있는 수단을 제공하고 필요하면 UI를 rebild한다.
+ - 첫번째, ChangeNotifier의 인스턴스를 만든다.
+ - 두번째, ChangeNotifier를 필요로하는 Widget에 ChangeNotifier를 쉽게 access할 수 있는 수단을 제공하고 필요하면 UI를 rebild한다.
  <img src="./README_images/provider_pattern_step4_CangeNotifierProvider_100.png">
 
 ### 4-2. 추가 작동과정 상세내용
