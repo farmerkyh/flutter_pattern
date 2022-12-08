@@ -280,7 +280,7 @@ class MyApp extends StatelessWidget {
 # 5. Dog App만들기 (step5) - (Provider - Extension method)
  - [ [참고소스-dog model](./lib/step5_ProviderExtensionMethod/models/dog.dart) ]
  - [ [참고소스-main](./lib/step5_ProviderExtensionMethod/dog_app_step5.dart) ]
- 
+
 ### 1. 정의
   - Provider는 BuildContext를 Extend한 method를 포함한다.
   - BuildContext는 Widget Tree상에서 Widget의 위치에 대한 reference를 가지고 있는 Object이다.
@@ -318,6 +318,7 @@ class MyApp extends StatelessWidget {
 
 ##### 2. 실행화면
 <img src="./README_images/provider_pattern_step5_ProviderExtensionMethod_120.png">
+
  1. [2. Extendsion method] 설명을 보면    
     read는 처음 한번만 읽고 lesten하지 않고,   
     watch는 변경사항을 계속 listen하고 있고,     
@@ -338,10 +339,12 @@ class MyApp extends StatelessWidget {
 # 6. Dog App만들기 (step6) - (FutureProvider 사용하기)
 ### 1. MultiProvider
  <img src="./README_images/provider_pattern_step6_MultiProvider_100.png">
+
  - SyntacticSugar 용어 : 기능적으로 동일한데, 문법적으로 좀더 쉽게 재 표현한 스크립트를 말한다.
 
 ### 2. FutureProvider
  <img src="./README_images/provider_pattern_step6_FutureProvider_100.png">
+ 
  - FutureBuilder와 유사한 기능으로 동작한다.
  - FutureProvider는 두번 build된다.
     . init 시점
