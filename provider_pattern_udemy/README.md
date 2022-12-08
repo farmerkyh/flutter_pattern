@@ -319,12 +319,11 @@ class MyApp extends StatelessWidget {
 ##### 2. 실행화면
 <img src="./README_images/provider_pattern_step5_ProviderExtensionMethod_120.png">
 
-```dart
- 1. [2. Extendsion method] 설명을 보면    
+ 1. 위 [2. Extendsion method] 설명을 보면    
     read는 처음 한번만 읽고 lesten하지 않고,   
     watch는 변경사항을 계속 listen하고 있고,     
-    select는 명시한 하나의 항목만 listen하고 있다고 했다.
- 2. 하지만 위 실행하면을 보면 다르게 나온다.
+    select는 명시한 하나의 항목만 listen한다 라고 했다.
+ 2. 하지만 위 실행하면을 보면 다르게 출력된다.
  3. [NameFirst] cass에서, read, watch 2개 Text Widget을 출력해보면 동일하게 Watch하고 있다.    
     이건 Text, read, watch, ChangeNotifierProvider 의 특징인데.. 아직 정확하게는 어느것때문에 이렇게 동작하는지 모르겠다.
     `하지만 한가지 명확한 건 watch로 구성된 Class(Widget)는 전체 rebuild된다.`
