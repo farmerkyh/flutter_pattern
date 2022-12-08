@@ -74,8 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('              [ MyHomePage class ]                 ', style: TextStyle(fontSize: 20.0)),
-              Text('1. name: ${context.watch<Dog>().name}', style: const TextStyle(fontSize: 20.0)),
+              const Text('              [ MyHomePage class ]                 ',
+                  style: TextStyle(fontSize: 20.0)),
+              Text('1. name: ${context.watch<Dog>().name}',
+                  style: const TextStyle(fontSize: 20.0)),
               const SizedBox(height: 30.0),
               const BreedAndAge(),
               const SizedBox(height: 30.0),
@@ -98,8 +100,10 @@ class BreedAndAge extends StatelessWidget {
       color: Colors.blue[100],
       child: Column(
         children: [
-          const Text('            [ BreedAndAge class ]            ', style: TextStyle(fontSize: 20.0)),
-          Text('2. breed: ${context.select<Dog, String>((Dog dog) => dog.breed)}',
+          const Text('            [ BreedAndAge class ]            ',
+              style: TextStyle(fontSize: 20.0)),
+          Text(
+              '2. breed: ${context.select<Dog, String>((Dog dog) => dog.breed)}',
               style: const TextStyle(fontSize: 20.0)),
           const SizedBox(height: 10.0),
           const Age(),
@@ -123,7 +127,8 @@ class Age extends StatelessWidget {
       child: Column(
         children: [
           const Text('[ Age class ]', style: TextStyle(fontSize: 20.0)),
-          Text('3. age (select): ${context.select<Dog, int>((Dog dog) => dog.age)}',
+          Text(
+              '3. age (select): ${context.select<Dog, int>((Dog dog) => dog.age)}',
               style: const TextStyle(fontSize: 20.0)),
           //Consumer는 다다..음(?) 챕터에서 진행예정
           // Consumer<Dog>(builder: (context, Dog dog, _) {
@@ -132,10 +137,11 @@ class Age extends StatelessWidget {
           //     style: const TextStyle(fontSize: 20.0),
           //   );
           // }),
+          //const SizedBox(height: 10.0),
+          //Text('4. number of babies (watch) : ${context.watch<int>()}', style: const TextStyle(fontSize: 20.0)),
           const SizedBox(height: 10.0),
-          Text('4. number of babies (watch) : ${context.watch<int>()}', style: const TextStyle(fontSize: 20.0)),
-          const SizedBox(height: 10.0),
-          Text('5. number of babies (read) : ${context.read<int>()}', style: const TextStyle(fontSize: 20.0)),
+          Text('5. number of babies (read) : ${context.read<int>()}',
+              style: const TextStyle(fontSize: 20.0)),
           const SizedBox(height: 20.0),
           ElevatedButton(
               onPressed: () => context.read<Dog>().grow(),

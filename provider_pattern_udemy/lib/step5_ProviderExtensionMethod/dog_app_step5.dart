@@ -64,6 +64,7 @@ class NameFirst extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('NameFirst');
     return Container(
       //alignment: Alignment,
       color: Colors.amber[100],
@@ -75,7 +76,7 @@ class NameFirst extends StatelessWidget {
             style: const TextStyle(fontSize: 20.0),
           ),
           Text(
-            '2. name (watch): ${context.watch<Dog>().name}',
+            '2. age (watch): ${context.watch<Dog>().age}',
             style: const TextStyle(fontSize: 20.0),
           ),
           const NameSecond(),
@@ -92,13 +93,15 @@ class NameSecond extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('NameSecond');
     return Container(
       color: Colors.blue[100],
       child: Column(
         children: [
-          const Text('   [ NameSecond class ]   ', style: TextStyle(fontSize: 20.0)),
+          const Text('   [ NameSecond class ]   ',
+              style: TextStyle(fontSize: 20.0)),
           Text(
-            '3. name (read): ${context.read<Dog>().name}',
+            '3. age (read): ${context.read<Dog>().age}',
             style: const TextStyle(fontSize: 20.0),
           ),
         ],
@@ -118,7 +121,8 @@ class BreedAndAge extends StatelessWidget {
       color: Colors.red[100],
       child: Column(
         children: [
-          const Text('   [ BreedAndAge class ]   ', style: TextStyle(fontSize: 20.0)),
+          const Text('   [ BreedAndAge class ]   ',
+              style: TextStyle(fontSize: 20.0)),
           Text(
             '4. breed (select): ${context.select<Dog, String>((Dog dog) => dog.breed)}',
             style: const TextStyle(fontSize: 20.0),
