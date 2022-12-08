@@ -325,15 +325,17 @@ class MyApp extends StatelessWidget {
     select는 명시한 하나의 항목만 listen한다 라고 했다.
  2. 하지만 위 실행하면을 보면 다르게 출력된다.
  3. [NameFirst] cass에서, read, watch 2개 Text Widget을 출력해보면 동일하게 Watch하고 있다.    
-    이건 Text, read, watch, ChangeNotifierProvider 의 특징인데.. 아직 정확하게는 어느것때문에 이렇게 동작하는지 모르겠다.   
+    이건 Text, read, watch, ChangeNotifierProvider 의 특징인데.. 아직 정확하게는 어느것 때문에 이렇게 동작하는지 모르겠다.   
     `하지만 한가지 명확한 건 watch로 구성된 Class(Widget)는 전체 rebuild된다.`
-    `그래서, NameFirst class에서 dog.name이 동일하게 보여진다.`
+    `그래서, NameFirst class에서 dog.name이 read이건, watch이건 동일하게 보여진다.`
  4. [NameSecond] class는 [MyHomePage, NameFirst] class 두 곳에서 불려지고 있다.    
     이렇게 개발할 일은 거의 없지만, 테스트 해보려고 구성해 봤다.   
- 5. 위 3번에서 watch method에 의해 name이 변경 되면 rebuild 된다고 했다.   
-    그런데, `[MyHomePage] class에서 child인 [NameSecond]는 rebuild되지 않는다.`   
-    그래서 [NameSecond]안에 있는 dog.name은 read method의 해서 초기 한번만 보여주고,   
-    변경된 name은 반영되지 않는다.
+ 5. 위 3번에서 watch method에 의해 name이 변경 되면 MyHomePage] class는 rebuild 된다고 했다.    
+    `[MyHomePage] class에서 child인 Widget들은 모두 렌더링되지만, [NameSecond] class는 rebuild되지 않는다.`   
+    그래서 [NameSecond]안에 있는 dog.name은 read method의 해서 초기 한번만 보여주고,    
+    변경된 name은 반영되지 않는다.   
+    `고로, 일반 Widget은 rebuild될때 모두(?) 렌더링 되지만, Class Widget은 해당 Class의 구성에 따라서 rebuild할지 여부를 판단한다.`
+
 
 # 6. Dog App만들기 (step6) - (FutureProvider 사용하기)
 ### 1. MultiProvider
