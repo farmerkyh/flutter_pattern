@@ -66,6 +66,13 @@
     - 단, Provider type의 class가 ChangeNotifier를 상속받고, notifyListeners()를 호출해줘야 된다.
 
 ### 1-5 Provider Widget생성과정 및 진행 프로세스
+ 1. 진행 프로세스
+    - Provider 정의시 생성(lazy:true)
+    - 하위 Widget class에서 사용
+    - Provider type으로 정의된 instance가 변경 시 notify를 해준다.
+    - Listener의 class들은 rebuild 한다.
+    - 참고, `Provider 정의시 생성 프로세스쪽으로 다시 호출 되지 않는다.`
+   
 
 # 2. ChangeNotifier
 ### 2-1 ChangeNotifier Syntax
@@ -86,12 +93,25 @@
 # 4. FutureProvider
 ### 4-1 FutureProvider Syntax
 ### 4-2 FutureProvider 정의
+ 1. FutureProvider는 두번 build된다.
+    - 첫번째는 initialData를 기준으로 build된다.
+    - 두번째는 create 쪽에서 Future값이 return된 후에 build된다.
+ 2. FutureProvider는 Future return value를 type으로 선언한다.    
 ### 4-3 FutureProvider 속성설명
 ### 4-3 FutureProvider 하위Widget(class)에서 사용문법 및 정의
 
 ### 4-5 FutureProvider Widget생성과정 및 진행 프로세스
 
 
+# 5. StreamProvider
+### 6-1 StreamProvider Syntax
+### 6-2 StreamProvider 정의
+ 1. StreamProvider는 여러번 build된다.
+    - 첫번째는 initialData를 기준으로 build된다.
+    - 두번째는 create 쪽에서 Stream값이 return될때 마다 build된다.
+ 2. StreamProvider는 Stream return value를 type으로 선언한다.    
+### 6-3 StreamProvider 속성설명
+### 6-3 StreamProvider 하위Widget(class)에서 사용문법 및 정의
 
 # ?. ????
 ### ?-1 ???? Syntax

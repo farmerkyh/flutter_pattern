@@ -199,9 +199,11 @@ class MyApp extends StatelessWidget {
 
 
 # 4. Dog App만들기 (step4) - (ChangeNotifierProvider 사용)
- - [ [참고소스 - dog Model](./lib/step4_CangeNotifierProvider/models/dog.dart) ]
- - [ [참고소스 - Main](./lib/step4_CangeNotifierProvider/dog_app_step4.dart) ]
-
+ 0. 강의
+    - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 10. Chapter 10. ChangeNotifierProvider
+    - [ [참고소스 - dog Model](./lib/step4_CangeNotifierProvider/models/dog.dart) ]
+    - [ [참고소스 - Main](./lib/step4_CangeNotifierProvider/dog_app_step4.dart) ]
 
 ### 4-1. 작동과정
  - 첫번째, ChangeNotifier의 인스턴스를 만든다.
@@ -288,9 +290,18 @@ class MyApp extends StatelessWidget {
   }
 ```
 
+
+
+
+
+
+
 # 5. Dog App만들기 (step5) - (Provider - Extension method)
- - [ [참고소스-dog model](./lib/step5_ProviderExtensionMethod/models/dog.dart) ]
- - [ [참고소스-main](./lib/step5_ProviderExtensionMethod/dog_app_step5.dart) ]
+ 0. 강의
+    - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 11. Chapter 11. read, watch, select extension methods
+    - [ [참고소스-dog model](./lib/step5_ProviderExtensionMethod/models/dog.dart) ]
+    - [ [참고소스-main](./lib/step5_ProviderExtensionMethod/dog_app_step5.dart) ]
 
 ### 5-1. 정의
   - Provider는 BuildContext를 Extend한 method를 포함한다.
@@ -354,26 +365,111 @@ class MyApp extends StatelessWidget {
 
 
 # 6. Dog App만들기 (step6) - (FutureProvider 사용하기)
+ 0. 강의
+    - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 12. Chapter 12. MultiProvider
+    - 13. Chapter 13. FutureProvider
+    - [ [참고소스-dog model](./lib/step6_FutureProvider/models/dog.dart) ]
+    - [ [참고소스-babies model](./lib/step6_FutureProvider/models/babies.dart) ]
+    - [ [참고소스-main](./lib/step6_FutureProvider/dog_app_step6.dart) ]
+
+
 ### 6-1. MultiProvider
  <img src="./README_images/provider_pattern_step6_MultiProvider_100.png">
 
  - SyntacticSugar란 : (용어)기능적으로 동일한데, 문법적으로 좀더 쉽게 재 표현한 스크립트를 말한다.
 
-### 6-2. FutureProvider
+### 6-2. FutureProvider 정의
+1. 기본 syntax
  <img src="./README_images/provider_pattern_step6_FutureProvider_100.png">
 
- - FutureBuilder와 유사한 기능으로 동작한다.
- - FutureProvider는 두번 build된다.
-    . init 시점
-    . 리져브드(?) 될때
- - 만약, 여러게의 연속적인 값에 의해 rebuild하고 싶다면 StreamProvider를 사용한다.
- - error가 발생할 수 있을 경우에는 error method를 제공해야 된다.
+2. FutureBuilder와 유사한 기능으로 동작한다.
+3. 만약, 여러게의 연속적인 값에 의해 rebuild하고 싶다면 StreamProvider를 사용한다.
+4. error가 발생할 수 있을 경우에는 error method를 제공해야 된다.
  
+### 6-3. 주요소스 정의소스
+ <img src="./README_images/provider_pattern_step6_FutureProvider_120.png">
+
+ 1. FutureProvider는 Future return value를 type으로 선언한다.
+ 2. FutureProvider는 Babies.getBabies를 aync로 Future<int>값을 return받아 사용한다.
+ 3. 바로 return되는 값이 아닌, 미래에 return되는 결과를 받아서 사용하는 경우에 FutureProvider를 사용한다.
+ 4. 같은 Widget Class에 존재하는 다른 Provider의 값을 사용할 수 있다.
+
+### 6-4. 주요소스 사용소스
+ 1. context.read<int>(),  
+    - FutureProvider선언시 type을 <int>로 했기 때문에 위와 같이 사용된다.
+ 2. context.watch<int>()
+    - 현재 챕터에서는 watch를 기술해도 read와 동일 하다.
+    - FutureProvider정의 문장은 한번만 수행되고, Babies class는 ChangeNotifier상속이 안되어 있고, notifyListeners() 호출도 없기 때문이다.
+
+### 6-5. 실행화면
+ <img src="./README_images/provider_pattern_step6_FutureProvider_110.png">
+
+  - 첫번째 이미지   
+    . 초기 시작시 화면이다.
+  - 두번째 이미지
+    . 2초후 결과 화면이다.
+  - 세번째 이미지
+    . [Grow버튼]을 6번 누른 결과 화면이다.
+    . FutureProvider내부의 값들이 변경 되어도 반영되지 않는다. ChangeNotifier상속이 하지 않았기 때문이다.
+    . [Grow버튼]클릭 시 Age Widget class는 rebuild는 된다. 하지만 값은 변경되지 않는다.
+
+
+
+
 
 
 
 # 7. Dog App만들기 (step7) - (StreamProvider 사용하기)
+ ### 7-1 강의
+    - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 14. Chapter 14. StreamProvider
+    - [ [참고소스-dog model](./lib/step7_StreamProvider/models//babies.dart) ]
+    - [ [참고소스-babies model](./lib//step7_StreamProvider/models/dog/.dart) ]
+    - [ [참고소스-main](./lib//step7_StreamProvider/dog_app_step7.dart) ]
+
+### 7-2 주요소스
+ 1. 위 참고소스 참조
+ 2. StreamProvider는 FutureProvider와 StreamView랑 비슷하기 때문에 상세 설명은 생략한다.
+
+### 7-2 실행화면
+ <img src="./README_images/provider_pattern_step7_StreamProvider_100.png">
+
+ 1. 첫번째 이미지
+   - 처음 실행시 화면이다.
+ 2. 두번째 이미지
+   - 3~4초 이후의 실행 화면이다.
+ 3. 세번째 이미지
+   - 5초 이후의 실행 화면이다.
+ 4. 네번째 이미지
+   - [Grow버튼]을 두번 누른 후의 실행 화면이다.
+
+
+
+# 8. Dog App만들기 (step8) - (Consumer 사용하기)
+ ### 8-1 강의
+    - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 15. Chapter 15. Consumer
+    - [ [참고소스-dog model](./lib/step7_StreamProvider/models//babies.dart) ]
+    - [ [참고소스-babies model](./lib//step7_StreamProvider/models/dog/.dart) ]
+    - [ [참고소스-main](./lib//step7_StreamProvider/dog_app_step7.dart) ]
+
+### 8-2 Consumer란
+ <img src="./README_images/provider_pattern_step8_Consumer_100.png">
  
+ 1. 개발자가 Provider.of<T>를 통해서 type T의 object를 얻을 필요가 없다.
+ 2. builder는 null이 아니여야 하고, 값이 변할 때마다 builder가 호출 되어야 한다.
+    - 이 정의라고 하면 rebuild할 필요가 없는 widget들도 다 rebuild가 될 수 있다.
+    - 하지만, 이걸 대비해서 Builder() method에는 Nullable type의 Widget? child arg가 있다.
+
+
+
+
+
+
+
+
+
 
 
 
