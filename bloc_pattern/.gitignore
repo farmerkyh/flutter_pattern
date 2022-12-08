@@ -1,3 +1,11 @@
+#farmer add
+/build/
+/linux/
+/macos/
+/web/
+/windows/
+~$*.pptx
+
 # Miscellaneous
 *.class
 *.log

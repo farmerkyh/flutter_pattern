@@ -13,17 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider<Dog>(
-      create: (context) => Dog(
-        name: 'Sun',
-        breed: 'Bulldog',
-        age: 3,
-      ),
+      create: (context) => Dog(name: 'Sun', breed: 'Bulldog', age: 3),
+      lazy: true, //default:true
       child: MaterialApp(
         title: 'Provider 02',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: ThemeData(primarySwatch: Colors.blue),
         home: const MyHomePage(),
       ),
     );
@@ -44,10 +39,7 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              '- name: ${Provider.of<Dog>(context).name}',
-              style: const TextStyle(fontSize: 20.0),
-            ),
+            Text('- name: ${Provider.of<Dog>(context).name}', style: const TextStyle(fontSize: 20.0)),
             const SizedBox(height: 10.0),
             const BreedAndAge(),
           ],
@@ -64,10 +56,7 @@ class BreedAndAge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          '- breed: ${Provider.of<Dog>(context).breed}',
-          style: const TextStyle(fontSize: 20.0),
-        ),
+        Text('- breed: ${Provider.of<Dog>(context).breed}', style: const TextStyle(fontSize: 20.0)),
         const SizedBox(height: 10.0),
         const Age(),
       ],
@@ -83,13 +72,12 @@ class Age extends StatelessWidget {
     return Column(
       children: [
         Text(
-          '- age: ${Provider.of<Dog>(context).age}',
+          '- age: ${Provider.of<Dog>(context, listen: true).age}',
           style: const TextStyle(fontSize: 20.0),
         ),
         const SizedBox(height: 20.0),
         ElevatedButton(
           onPressed: () => Provider.of<Dog>(context, listen: false).grow(),
-          //onPressed: () => Provider.of<Dog>(context).grow(),
           child: const Text('Grow', style: TextStyle(fontSize: 20.0)),
         ),
       ],

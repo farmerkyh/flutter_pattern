@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
-
-class Dog with ChangeNotifier {
+class Dog {
   final String name;
   final String breed;
   int age;
