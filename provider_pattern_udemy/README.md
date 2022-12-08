@@ -318,7 +318,7 @@ class MyApp extends StatelessWidget {
 
 ##### 2. 실행화면
 <img src="./README_images/provider_pattern_step5_ProviderExtensionMethod_120.png">
-
+```dart
  1. [2. Extendsion method] 설명을 보면    
     read는 처음 한번만 읽고 lesten하지 않고,   
     watch는 변경사항을 계속 listen하고 있고,     
@@ -334,7 +334,7 @@ class MyApp extends StatelessWidget {
     그런데, `[MyHomePage] class에서 child인 [NameSecond]는 rebuild되지 않는다.`   
     그래서 [NameSecond]안에 있는 dog.name은 read method의 해서 초기 한번만 보여주고,   
     변경된 name은 반영되지 않는다.
-
+```
 
 # 6. Dog App만들기 (step6) - (FutureProvider 사용하기)
 ### 1. MultiProvider
@@ -344,7 +344,7 @@ class MyApp extends StatelessWidget {
 
 ### 2. FutureProvider
  <img src="./README_images/provider_pattern_step6_FutureProvider_100.png">
- 
+
  - FutureBuilder와 유사한 기능으로 동작한다.
  - FutureProvider는 두번 build된다.
     . init 시점
