@@ -1,31 +1,27 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:provider/provider.dart';
-import 'fish_model.dart';
+import './fish_model.dart';
 
-void main() => runApp(const MyApp());
-=======
-import 'provider_pattern_100/provider_patter_100.dart';
+//void main() => runApp(const MyApp());
 
-void main() => runApp(const ProviderPattern100());
->>>>>>> a7c2e957e32c09d8b8d4ba94f739af4727f46661
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ProviderPattern100 extends StatelessWidget {
+  const ProviderPattern100({super.key});
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
+    //-------------------------------------------------------------------------------------
     //Provider pattern
     //1. MaterialApp을 Provider widget의 child로 감싼다.
     //   - 이로써 MaterialApp하위 모든 위젯에서 FishModel instance에 접근을 할 수 있게 된다.
     //   - 즉, 자료를 넘겨줄 수로가 생기는 것이다.
-    //2. (constext) 를
-    //3. create: 를 통해서 FishModel클래스를 리턴해 주게 된다.
+    //2. (constext) 를 ....
+    //3. create:
+    //   - create: 를 통해서 FishModel클래스를 넘겨주게 된다. 즉, 사용할 수 있게 해준다.
+    //-------------------------------------------------------------------------------------
     return Provider(
       //create: (BuildContext context) {  },
       create: (context) => FishModel(name: 'Salmon', number: 10, size: 'big'),
-      child: MaterialApp(
+      child: const MaterialApp(
         home: FishOrder(),
       ),
     );
@@ -39,16 +35,16 @@ class FishOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Fish Order')),
+      appBar: AppBar(title: const Text('Fish Order')),
       body: Center(
         child: Column(
           children: [
             Text(
               'Fish name: ${Provider.of<FishModel>(context).name}',
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
-            SizedBox(height: 20),
-            High()
+            const SizedBox(height: 20),
+            const High()
           ],
         ),
       ),
@@ -63,13 +59,11 @@ class High extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      // ignore: prefer_const_literals_to_create_immutables
       children: [
-        Text(
-          'SpicyA is locate at high place',
-          style: TextStyle(fontSize: 16),
-        ),
-        SizedBox(height: 20),
-        SpciyA()
+        const Text('SpicyA is locate at high place', style: TextStyle(fontSize: 16)),
+        const SizedBox(height: 20),
+        const SpciyA()
       ],
     );
   }
@@ -85,15 +79,14 @@ class SpciyA extends StatelessWidget {
       children: [
         Text(
           'Fish number: ${Provider.of<FishModel>(context).number}', //주문한 생선 수량
-          style: TextStyle(fontSize: 16, color: Colors.red),
+          style: const TextStyle(fontSize: 16, color: Colors.red),
         ),
         Text(
           'Fish size: ${Provider.of<FishModel>(context).size}', //주문한 생선의 size
-          style: TextStyle(
-              fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 20),
-        Middle()
+        const SizedBox(height: 20),
+        const Middle()
       ],
     );
   }
@@ -105,19 +98,33 @@ class Middle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      // ignore: prefer_const_literals_to_create_immutables
+      children: [
+        const Text('SpicyB is located a middle place', style: TextStyle(fontSize: 16)),
+        const SizedBox(height: 20),
+        SpicyB()
+      ],
+    );
+  }
+}
+
+class SpicyB extends StatelessWidget {
+  const SpicyB({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
       children: [
         Text(
           'number: ${Provider.of<FishModel>(context).number}', //주문한 생선 수량
-          style: TextStyle(
-              fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
         Text(
           'size: ${Provider.of<FishModel>(context).size}', //주문한 생선의 size
-          style: TextStyle(
-              fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 20),
-        Low()
+        const SizedBox(height: 20),
+        const Low()
       ],
     );
   }
@@ -129,14 +136,14 @@ class Low extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      // ignore: prefer_const_literals_to_create_immutables
       children: [
-        Text(
+        const Text(
           'SpicyC is located a low place',
-          style: TextStyle(
-              fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 16),
         ),
-        SizedBox(height: 20),
-        SpicyC()
+        const SizedBox(height: 20),
+        const SpicyC()
       ],
     );
   }
@@ -151,19 +158,14 @@ class SpicyC extends StatelessWidget {
       children: [
         Text(
           'number: ${Provider.of<FishModel>(context).number}', //주문한 생선 수량
-          style: TextStyle(
-              fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
         Text(
           'size: ${Provider.of<FishModel>(context).size}', //주문한 생선의 size
-          style: TextStyle(
-              fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
       ],
     );
-=======
-    return const ProviderPattern100();
->>>>>>> a7c2e957e32c09d8b8d4ba94f739af4727f46661
   }
 }
