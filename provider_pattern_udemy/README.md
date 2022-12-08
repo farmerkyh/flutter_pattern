@@ -139,7 +139,7 @@ class MyApp extends StatelessWidget {
  2. 주요소스
   <img src="./README_images/provider_pattern_step2_provider_200.png">
 
- 3. 하위 Widget들에게 전달하고 싶은 Model 정의
+ 3. 하위 Widget들에게 전달하고 싶은 Model(Dog) 정의
     - Model정의 시 ChangeNotifier 및 notifyListeners() 기능을 사용하지 않았다.
     - 이로 인해 Model(Dog)의 어떠한 값이 변경되어도    
       dog속성값들을 사용되고 있는 Widget들에게 전달(즉,rebuild)되지 않는다.
@@ -165,11 +165,19 @@ class MyApp extends StatelessWidget {
 
 
 # 3. Dog App만들기 (step3) - (Provider 미사용 )- (ChangeNotifier 사용)
-- [ [참고소스](./lib/step3_ChangeNotifier/dog_app_step3.dart) ]
+- [ [참고소스 - dog model](./lib/step3_ChangeNotifier/models/dog.dart) ]
+- [ [참고소스 - main](./lib/step3_ChangeNotifier/dog_app_step3.dart) ]
+### 3-1 주요소스 및 Widget Tree
+ <img src="./README_images/provider_pattern_step3_ChangeNotifier_110.png">
 
- 1. Provider를 사용하지 않았기 때문에 Dog instance를 필요한 Widget들에게 argument로 넘겨 주고 있다.
+ 1. ChangeNotifier와 notifyListeners() 기능은 사용했다.
+ 2. 하지만, Provider Widget을 정의하지 않아 listner가 없어, dog model값이 변경되어도 반영되지 않는다.
+ 3. 위 소스상에서 age가 변경 시 적용할 수 있는 방법은
+    - Age class를 StatefullWidget으로 정의하고, [Grow]버튼 클릭 시 setState(){}를 해줘면 된다.
+    - 그런데, 이렇게 하지 않은 이유는 현재 챕터에서는 Provider를 사용하지 않았을때 dog model값이 변경 되어도   
+       자동으로 반영되지 않는다는걸 보여주기 위해서 위와 같이 개발한 것이다.
 
-### 3-1. ChangeNotifier 상속받아 사용하기
+### 3-2 ChangeNotifier 상속받아 사용하기
   - notifyListeners()라는 void method : 를 기술하게 되면 
   - ChangeNotifier에 의해 상속받은 class의 값이 변동 되었을때,   
     notifyListeners()라는 void method를 호출하게 되면      
@@ -182,13 +190,7 @@ class MyApp extends StatelessWidget {
     . Widget이 종료 될때 listen하고 있는 widget들이 자동으로 dispose되지 않기 때문에 반드시 dispose를 해줘야 된다.    
     . removeListener() method를 이용한다.  
 
- <img src="./README_images/provider_pattern_step3_provider_100.png">
-
-### 3-2. [grow]버튼을 눌러도 화면에는 아직 age가 올라가지 않는다.
-
-### 3-3. 주요소스
-    - 이 챕터의 주요소스는 다음챕터에서 처리
-    - 이 챕터는 다음 챕터를 개발하기 위한 지나가는 과정 이기 때문에 소스는 기술하지 않겠다.
+ <img src="./README_images/provider_pattern_step3_ChangeNotifier_100.png">
 
 
 
@@ -197,7 +199,9 @@ class MyApp extends StatelessWidget {
 
 
 # 4. Dog App만들기 (step4) - (ChangeNotifierProvider 사용)
- - [ [참고소스](./lib/step4_CangeNotifierProvider/dog_app_step4.dart) ]
+ - [ [참고소스 - dog Model](./lib/step4_CangeNotifierProvider/models/dog.dart) ]
+ - [ [참고소스 - Main](./lib/step4_CangeNotifierProvider/dog_app_step4.dart) ]
+
 
 ### 4-1. 작동과정
  - 첫번째, ChangeNotifier의 인스턴스를 만든다.
@@ -342,6 +346,11 @@ class MyApp extends StatelessWidget {
     그래서 [NameSecond]안에 있는 dog.name은 read method의 해서 초기 한번만 보여주고,    
     변경된 name은 반영되지 않는다.   
     `고로, 일반 Widget은 rebuild될때 모두(?) 렌더링 되지만, Class Widget은 해당 Class의 구성에 따라서 rebuild할지 여부를 판단한다.`
+
+
+
+
+
 
 
 # 6. Dog App만들기 (step6) - (FutureProvider 사용하기)
