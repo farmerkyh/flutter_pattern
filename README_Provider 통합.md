@@ -218,8 +218,36 @@ class MyHomePage extends StatelessWidget {
 
 # 7. ProxyProvider
 ### 7-1 ProxyProvider Syntax
+```dart
+  ProxyProvider({
+      Key? key,
+      Create<R>? create,
+      required ProxyProviderBuilder<T, R> update,
+      UpdateShouldNotify<R>? updateShouldNotify,
+      Dispose<R>? dispose,
+      bool? lazy,
+      TransitionBuilder? builder,
+      Widget? child,
+    })
+```
+ 1. create
+    - 한번만 호출 된다.
+    - create가 optional 한 이유는 다른 Provider에서 사용하기 위해서만 필요하다면 사용하지 않아도 된다.
+     
+ 2. update
+    - 여러번 호출 될 수 있다.
+    - ProxyProvider는 다른 provider의 value에 의존하기 때문이다.
+    - update가 호출 되는 3가지 조건
+      . 첫번째, ProxyProvider가 의존하는 Provider의 value를 처음으로 얻을 때
+      . 두번째, ProxyProvider가 의존하는 Provider의 value가 변경 될때 마다
+      . 세번째, ProxyProvider가 rebuild될 때 마다
+ 
+          
 ### 7-2 ProxyProvider 정의
- 1. 다른 Providcer의 값을 사용할 수 있다.
+ 1. 다른 Provider의 값을 사용할 수 있다.
+ 2. ProxyProvider는 다른 provider의 value에 의존한다.  
+    즉, 다른 value가 변하게 되면 새로 만들어야 된다는 뜻이다.
+    
 ### 7-3 ProxyProvider 속성설명
 ### 7-3 ProxyProvider 하위Widget(class)에서 사용문법 및 정의
 

@@ -57,7 +57,7 @@
    
    
 # 1. Counter App만들기 (step1) - Provider 미사용
- - [ [참고소스](./lib/step1_counter_app/counter_app_step1.dart) ]
+ - [ [개발소스](./lib/step1_counter_app/counter_app_step1.dart) ]
 
 ### 1. 정의
  - Provider를 사용하지 않은 counter개발소스 app
@@ -82,7 +82,7 @@
    
    
 # 2. Dog App만들기 (step2) - Provider 사용 - (ChangeNotifier 미사용)
- - [ [참고소스](./lib/step2_Provider/dog_app_step2.dart) ]
+ - [ [개발소스](./lib/step2_Provider/dog_app_step2.dart) ]
 
 ### 2-1 상태관리(State Management) 정의
  1. Dependency Injection기능 사용하기
@@ -172,8 +172,8 @@ class MyApp extends StatelessWidget {
    
    
 # 3. Dog App만들기 (step3) - (Provider 미사용 )- (ChangeNotifier 사용)
-- [ [참고소스 - dog model](./lib/step3_ChangeNotifier/models/dog.dart) ]
-- [ [참고소스 - main](./lib/step3_ChangeNotifier/dog_app_step3.dart) ]
+- [ [개발소스 - dog model](./lib/step3_ChangeNotifier/models/dog.dart) ]
+- [ [개발소스 - main](./lib/step3_ChangeNotifier/dog_app_step3.dart) ]
 ### 3-1 주요소스 및 Widget Tree
  <img src="./README_images/provider_pattern_step3_ChangeNotifier_110.png">
 
@@ -209,8 +209,8 @@ class MyApp extends StatelessWidget {
  0. 강의
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 10. Chapter 10. ChangeNotifierProvider
-    - [ [참고소스 - dog Model](./lib/step4_CangeNotifierProvider/models/dog.dart) ]
-    - [ [참고소스 - Main](./lib/step4_CangeNotifierProvider/dog_app_step4.dart) ]
+    - [ [개발소스 - dog Model](./lib/step4_CangeNotifierProvider/models/dog.dart) ]
+    - [ [개발소스 - Main](./lib/step4_CangeNotifierProvider/dog_app_step4.dart) ]
 
 ### 4-1. 작동과정
  - 첫번째, ChangeNotifier의 인스턴스를 만든다.
@@ -307,8 +307,8 @@ class MyApp extends StatelessWidget {
  0. 강의
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 11. Chapter 11. read, watch, select extension methods
-    - [ [참고소스-dog model](./lib/step5_ProviderExtensionMethod/models/dog.dart) ]
-    - [ [참고소스-main](./lib/step5_ProviderExtensionMethod/dog_app_step5.dart) ]
+    - [ [개발소스-dog model](./lib/step5_ProviderExtensionMethod/models/dog.dart) ]
+    - [ [개발소스-main](./lib/step5_ProviderExtensionMethod/dog_app_step5.dart) ]
 
 ### 5-1. 정의
   - Provider는 BuildContext를 Extend한 method를 포함한다.
@@ -376,9 +376,9 @@ class MyApp extends StatelessWidget {
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 12. Chapter 12. MultiProvider
     - 13. Chapter 13. FutureProvider
-    - [ [참고소스-babies model](./lib/step6_FutureProvider/models/babies.dart) ]
-    - [ [참고소스-dog model](./lib/step6_FutureProvider/models/dog.dart) ]
-    - [ [참고소스-main](./lib/step6_FutureProvider/dog_app_step6.dart) ]
+    - [ [개발소스-babies model](./lib/step6_FutureProvider/models/babies.dart) ]
+    - [ [개발소스-dog model](./lib/step6_FutureProvider/models/dog.dart) ]
+    - [ [개발소스-main](./lib/step6_FutureProvider/dog_app_step6.dart) ]
 
 
 ### 6-1. MultiProvider
@@ -431,12 +431,12 @@ class MyApp extends StatelessWidget {
  ### 7-1 강의
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 14. Chapter 14. StreamProvider
-    - [ [참고소스-babies model](./lib/step7_StreamProvider/models/babies.dart) ]
-    - [ [참고소스- dog model](./lib/step7_StreamProvider/models/dog.dart) ]
-    - [ [참고소스-main](./lib/step7_StreamProvider/dog_app_step7.dart) ]
+    - [ [개발소스-babies model](./lib/step7_StreamProvider/models/babies.dart) ]
+    - [ [개발소스- dog model](./lib/step7_StreamProvider/models/dog.dart) ]
+    - [ [개발소스-main](./lib/step7_StreamProvider/dog_app_step7.dart) ]
 
 ### 7-2 주요소스
- 1. 위 참고소스 참조
+ 1. 위 개발소스 참조
  2. StreamProvider는 FutureProvider와 StreamView랑 비슷하기 때문에 상세 설명은 생략한다.
 
 ### 7-2 실행화면
@@ -457,8 +457,8 @@ class MyApp extends StatelessWidget {
  ### 8-1 강의
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 15. Chapter 15. Consumer
-    - [ [참고소스-dog model](./lib/step8_Consumer/models/dog.dart) ]
-    - [ [참고소스-main](./lib/step8_Consumer/dog_app_step8.dart) ]
+    - [ [개발소스-dog model](./lib/step8_Consumer/models/dog.dart) ]
+    - [ [개발소스-main](./lib/step8_Consumer/dog_app_step8.dart) ]
 
 ### 8-2 Consumer란
  <img src="./README_images/provider_pattern_step8_Consumer_100.png">
@@ -504,7 +504,7 @@ class MyApp extends StatelessWidget {
 ### 9-1 강의
     - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 16. Chapter 16. Consumer, builder, ProviderNotFoundException
-    - [ [참고소스-main](./lib/step9_ConsumerException/dog_app_step9.dart) ]
+    - [ [개발소스-main](./lib/step9_ConsumerException/dog_app_step9.dart) ]
 
 ### 9-2 
   - 소스를 만든 이유를 모르겠음.
@@ -522,8 +522,8 @@ class MyApp extends StatelessWidget {
 ### 10-1 강의
     - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 17. Chapter 17. Selector
-    - [ [참고소스-dog model](./lib/step10_Selector/models/dog.dart) ]
-    - [ [참고소스-main](./lib/step10_Selector/dog_app_step10.dart) ]
+    - [ [개발소스-dog model](./lib/step10_Selector/models/dog.dart) ]
+    - [ [개발소스-main](./lib/step10_Selector/dog_app_step10.dart) ]
 
 ### 10-2 Selector란
  1. Customer Widget과 거의 유사하지만, Customer보다 좀더 세세하게 제어가 가능하다.
@@ -587,10 +587,11 @@ class MyApp extends StatelessWidget {
       
    
 # 11. Counter App만들기 (step11) - (ProviderNotFoundException 확인 및 보정)
+### 11-0 강의
     - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 18. Chapter 18. ProviderNotFoundException 더 알아보기와 Builder widget
-    - [ [참고소스-main](./lib/step11_ProviderNotFoundException/counter.dart) ]
-    - [ [참고소스-main](./lib/step11_ProviderNotFoundException/dog_app_step11.dart) ]
+    - [ [개발소스-main](./lib/step11_ProviderNotFoundException/counter.dart) ]
+    - [ [개발소스-main](./lib/step11_ProviderNotFoundException/dog_app_step11.dart) ]
 
 ### 11-1 ChangeNotifier Syntax
  1. 크게 2가지 방법으로 개발가능하다.
@@ -677,19 +678,20 @@ class MyHomePage extends StatelessWidget {
    
    
 # 12. counter App만들기 (step12) - (Provider access - Anonymous route access)
+### 12-0 강의
     - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 19. Chapter 19. Provider Access – Anonymous route access
-    - [ [참고소스-counter model](./lib/step12_AnonymousRouteAccess/counter.dart) ]
-    - [ [참고소스-main](./lib/step12_AnonymousRouteAccess/dog_app_step12.dart) ]
-    - [ [참고소스-두번째 화면](./lib/step12_AnonymousRouteAccess/show_me_counter.dart) ]
+    - [ [개발소스-counter model](./lib/step12_AnonymousRouteAccess/counter.dart) ]
+    - [ [개발소스-main](./lib/step12_AnonymousRouteAccess/dog_app_step12.dart) ]
+    - [ [개발소스-두번째 화면](./lib/step12_AnonymousRouteAccess/show_me_counter.dart) ]
 
 ### 12-1 Provider Access 란 
-  <img src="./README_images/provider_pattern_step12_100.png">
+  <img src="./README_images/provider_pattern_step12_ProviderAccess_100.png">
 
 ### 12-2 Anonymous route access 개발화면 flow
  - Anonymous route access
  - Provider를 이용해서 다른화면과 model공유 하기
- <img src="./README_images/provider_pattern_step12_110.png">
+ <img src="./README_images/provider_pattern_step12_ProviderAccess_110.png">
 
 ### 12-3 Anonymous route access 주요소스
  1. Provider선언
@@ -744,11 +746,12 @@ class ShowMeCounter extends StatelessWidget {
    
    
 # 13. counter App만들기 (step13) - (Provider access - Named route access)
+### 13-1 강의
     - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 20. Chapter 20. Provider Access – Named route access
-    - [ [참고소스-counter model](./lib/step13_NamedRouteAccess/counter.dart) ]
-    - [ [참고소스-main](./lib/step13_NamedRouteAccess/dog_app_step13.dart) ]
-    - [ [참고소스-두번째 화면](./lib/step13_NamedRouteAccess/show_me_counter.dart) ]
+    - [ [개발소스-counter model](./lib/step13_NamedRouteAccess/counter.dart) ]
+    - [ [개발소스-main](./lib/step13_NamedRouteAccess/dog_app_step13.dart) ]
+    - [ [개발소스-두번째 화면](./lib/step13_NamedRouteAccess/show_me_counter.dart) ]
 
 ### 13-2 Named route access 실행화면
  - 위 12 챕터와 화면은 동일
@@ -806,17 +809,18 @@ class ShowMeCounter extends StatelessWidget {
    
    
 # 14. counter App만들기 (step13) - (Provider access - Generated route access)
+### 14-1 강의
     - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 21. Chapter 21. Provider Access – Generated route access, Global access
-    - [ [참고소스-counter model](./lib/step14_GeneratedRouteAccess/counter.dart) ]
-    - [ [참고소스-main](./lib/step14_GeneratedRouteAccess/dog_app_step14.dart) ]
-    - [ [참고소스-두번째 화면](./lib/step14_GeneratedRouteAccess/show_me_counter.dart) ]
+    - [ [개발소스-counter model](./lib/step14_GeneratedRouteAccess/counter.dart) ]
+    - [ [개발소스-main](./lib/step14_GeneratedRouteAccess/dog_app_step14.dart) ]
+    - [ [개발소스-두번째 화면](./lib/step14_GeneratedRouteAccess/show_me_counter.dart) ]
 
-### 13-2 Generated route access 실행화면
- - 위 12 챕터와 화면은 동일
-  <img src="./README_images/.png">
+### 14-2 Generated route access 실행화면
+ - 위 13 챕터와 화면은 동일
+  
 
-### 13-3 Generated route access 주요소스
+### 14-3 Generated route access 주요소스
  1. Provider instance생성 및 선언
 ```dart
 class _MyAppState extends State<MyApp> {
@@ -856,53 +860,3 @@ class ShowMeCounter extends StatelessWidget {
 }
 ```
    
-      
-   
-      
-      
-   
-   
-      
-   
-      
-      
-   
-   
-      
-   
-      
-      
-   
-   
-      
-   
-   
-
-
-
-# 3. TO DO App 만들기 (step1)
-### 1. 사용기능
- - Provider를 사용하지 않고, arguments방식으로 값을 넘겨준다.
-<img src="./README_images/provider_pattern_todo_step1_100.png">
-
-
-
-# 4. TO DO App 만들기 (step2)
-# 5. TO DO App 만들기 (step3)
-# 6. TO DO App 만들기 (step4)
-
-# 10. Weather App 만들기
-<img src="./README_images/provider_pattern_weather_step1_100.png">
-<img src="./README_images/provider_pattern_weather_step1_110.png">
-
-# 20. Firebase Authentication App 만들기
-<img src="./README_images/provider_pattern_firebase_step1_100.png">
-<img src="./README_images/provider_pattern_firebase_step1_110.png">
-<img src="./README_images/provider_pattern_firebase_step1_120.png">
- - Firebase는 다양한 인증방법이 존재 한다.(email/password, anonymouse, social...)
- - 인증관련 상태(login, logout 등)를 실시간으로 stream으로 제공한다.
-
-<img src="./README_images/provider_pattern_firebase_step1_130.png">
-
-# 30. Misc
-<img src="./README_images/provider_pattern_misc_step1_100.png">
