@@ -48,7 +48,14 @@
       . 이는 개발에 상당히 불편함이 존재 할 수 있다.
 ```
 <img src="./README_images/provider_pattern_WhyProvider_100.png">
-
+   
+   
+   
+   
+   
+   
+   
+   
 # 1. Counter App만들기 (step1) - Provider 미사용
  - [ [참고소스](./lib/step1_counter_app/counter_app_step1.dart) ]
 
@@ -67,13 +74,13 @@
  3. MyHomePage에서 counter값이 변경되고,  setState()를 해야 된다. 이렇게 되면 MyHomePage아래의 모든 Widget Tree가 rebuild된다.
  4. 실재 rebuild되는 소스코드가 해당위치(CounterB)에 존재 하지 않고, 상위에 존재 하기 때문에 소스 Tracking하기가 쉽지 않다.
  5. Widget Tree의 depth가 길어지만 method및 데이터를 계속 전달시켜줘야 된다.
-
-
-
-
-
-
-
+   
+   
+   
+   
+   
+   
+   
 # 2. Dog App만들기 (step2) - Provider 사용 - (ChangeNotifier 미사용)
  - [ [참고소스](./lib/step2_Provider/dog_app_step2.dart) ]
 
@@ -156,14 +163,14 @@ class MyApp extends StatelessWidget {
      context를 주는 이유는 context를 통해 Widget tree를 위로 탐색해야 되기 때문이다.
    - Provider.of<Dog>(context) : 와 같이 기술하게 되면 Dog class의 instance를 제공해 준다.
    - Provider.of<T>(context) : T type의 instance를 제공해 준다.
-
-
-
-
-
-
-
-
+   
+   
+   
+   
+   
+   
+   
+   
 # 3. Dog App만들기 (step3) - (Provider 미사용 )- (ChangeNotifier 사용)
 - [ [참고소스 - dog model](./lib/step3_ChangeNotifier/models/dog.dart) ]
 - [ [참고소스 - main](./lib/step3_ChangeNotifier/dog_app_step3.dart) ]
@@ -191,13 +198,13 @@ class MyApp extends StatelessWidget {
     . removeListener() method를 이용한다.  
 
  <img src="./README_images/provider_pattern_step3_ChangeNotifier_100.png">
-
-
-
-
-
-
-
+   
+   
+   
+   
+   
+   
+   
 # 4. Dog App만들기 (step4) - (ChangeNotifierProvider 사용)
  0. 강의
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
@@ -289,13 +296,13 @@ class MyApp extends StatelessWidget {
     ...
   }
 ```
-
-
-
-
-
-
-
+   
+   
+   
+   
+   
+   
+   
 # 5. Dog App만들기 (step5) - (Provider - Extension method)
  0. 강의
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
@@ -357,20 +364,20 @@ class MyApp extends StatelessWidget {
     그래서 [NameSecond]안에 있는 dog.name은 read method의 해서 초기 한번만 보여주고,    
     변경된 name은 반영되지 않는다.   
     `고로, 일반 Widget은 rebuild될때 모두(?) 렌더링 되지만, Class Widget은 해당 Class의 구성에 따라서 rebuild할지 여부를 판단한다.`
-
-
-
-
-
-
-
+   
+   
+   
+   
+   
+   
+   
 # 6. Dog App만들기 (step6) - (FutureProvider 사용하기)
  0. 강의
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 12. Chapter 12. MultiProvider
     - 13. Chapter 13. FutureProvider
-    - [ [참고소스-dog model](./lib/step6_FutureProvider/models/dog.dart) ]
     - [ [참고소스-babies model](./lib/step6_FutureProvider/models/babies.dart) ]
+    - [ [참고소스-dog model](./lib/step6_FutureProvider/models/dog.dart) ]
     - [ [참고소스-main](./lib/step6_FutureProvider/dog_app_step6.dart) ]
 
 
@@ -413,20 +420,20 @@ class MyApp extends StatelessWidget {
     . [Grow버튼]을 6번 누른 결과 화면이다.
     . FutureProvider내부의 값들이 변경 되어도 반영되지 않는다. ChangeNotifier상속이 하지 않았기 때문이다.
     . [Grow버튼]클릭 시 Age Widget class는 rebuild는 된다. 하지만 값은 변경되지 않는다.
-
-
-
-
-
-
-
+   
+   
+   
+   
+   
+   
+   
 # 7. Dog App만들기 (step7) - (StreamProvider 사용하기)
  ### 7-1 강의
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 14. Chapter 14. StreamProvider
-    - [ [참고소스-dog model](./lib/step7_StreamProvider/models//babies.dart) ]
-    - [ [참고소스-babies model](./lib//step7_StreamProvider/models/dog/.dart) ]
-    - [ [참고소스-main](./lib//step7_StreamProvider/dog_app_step7.dart) ]
+    - [ [참고소스-babies model](./lib/step7_StreamProvider/models/babies.dart) ]
+    - [ [참고소스- dog model](./lib/step7_StreamProvider/models/dog.dart) ]
+    - [ [참고소스-main](./lib/step7_StreamProvider/dog_app_step7.dart) ]
 
 ### 7-2 주요소스
  1. 위 참고소스 참조
@@ -450,9 +457,8 @@ class MyApp extends StatelessWidget {
  ### 8-1 강의
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 15. Chapter 15. Consumer
-    - [ [참고소스-dog model](./lib/step7_StreamProvider/models//babies.dart) ]
-    - [ [참고소스-babies model](./lib//step7_StreamProvider/models/dog/.dart) ]
-    - [ [참고소스-main](./lib//step7_StreamProvider/dog_app_step7.dart) ]
+    - [ [참고소스-dog model](./lib/step8_Consumer/models/dog.dart) ]
+    - [ [참고소스-main](./lib/step8_Consumer/dog_app_step8.dart) ]
 
 ### 8-2 Consumer란
  <img src="./README_images/provider_pattern_step8_Consumer_100.png">
@@ -461,15 +467,416 @@ class MyApp extends StatelessWidget {
  2. builder는 null이 아니여야 하고, 값이 변할 때마다 builder가 호출 되어야 한다.
     - 이 정의라고 하면 rebuild할 필요가 없는 widget들도 다 rebuild가 될 수 있다.
     - 하지만, 이걸 대비해서 Builder() method에는 Nullable type의 Widget? child arg가 있다.
+ 3. of.context와 Consumer는 성능상으로 완전히 똑같다.
+ 4. of.context를 사용하고, notifyLisiteners() 가 실행되면 of.context를 사용하는 위젯 전체가 rebuild된다.    
+    Consumer는 해당 위젯에서 일부부만 rebuild되도록 설정할 수 있는 것이다.
+ 5. 만약에 큰 위젯이 존재하면, 따로 쪼개서 of.context를 사용하던가 or    
+    Consumer를 사용해서 해당 부분만 rebuild되게 하면 되는 것이다.
+ 6. 아니면 해당 위젯 전체는 한번만 읽어들인 뒤, 나머지 일부분만 rebuild 되게 하려면
+    of.context로 한 뒤에 listen: false 로 구독은 취소해두고, 일부분만 Consumer를 사용하면 된다.
 
+### 8-3 Consumer Syntax
+ ```dart
+  return Consumer<Dog> (
+    builder: (context, dog, child) => {...}
+    child:..
+  );
+ ```
+ 1. 인수는 3개, context, product, child이다.
+ 2. context : context아더,
+ 3. dog(2번째 인수)는 우리가 공유하는 dog instance를 의미한다.
+ 4. child는 다시 rebuild되지 않는 부분을 의미한다.    
+    만약, builder 속성안에 rebuild될 필요가 없는 위젯이 존재 한다면    
+    Consumner의 child로 위젯을 이동시키고, builder의 child에는 레퍼런스를 정의한다.
 
+### 8-4 Consumer 실행화면
+ <img src="./README_images/provider_pattern_step8_Consumer_110.png">
+   
+   
+   
+   
+   
+   
+   
+   
+   
+# 9. App만들기 (step9) - (Consumer, builder, ProviderNotFoundException 사용하기)
+### 9-1 강의
+    - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 16. Chapter 16. Consumer, builder, ProviderNotFoundException
+    - [ [참고소스-main](./lib/step9_ConsumerException/dog_app_step9.dart) ]
 
+### 9-2 
+  - 소스를 만든 이유를 모르겠음.
+  - 이해 안가서 skip
+   
+   
+   
+   
+   
+   
+   
+   
+   
+# 10. Dog App만들기 (step10) - (Chapter 17. Selector 사용하기)
+### 10-1 강의
+    - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 17. Chapter 17. Selector
+    - [ [참고소스-dog model](./lib/step10_Selector/models/dog.dart) ]
+    - [ [참고소스-main](./lib/step10_Selector/dog_app_step10.dart) ]
 
+### 10-2 Selector란
+ 1. Customer Widget과 거의 유사하지만, Customer보다 좀더 세세하게 제어가 가능하다.
+ 
+### 10-3 Selector Syntax
+  1. syntax
+ ```dart
+  return Selector<?,?>({
+    Key? key,
+    required ValueWidgetBuilder<S> builder,
+    required S Function(BuildContext, A) selector,
+    ShouldRebuild<S>? shouldRebuild,
+    Widget? child,
+  })
 
+  context.select<T, R>((R selector(T value)) => R..)
+ ```
+  2. builder : 
+  3. selector
+     - A type의 object를 받아서  S type의 value를 return하면 
+     - builder: 에서는 S type의 value를 가지고 Widget을 return한다.
+     - 
 
+### 10-4 Selector 사용예
+```dart
+  Selector<Dog, String>(
+    selector: (BuildContext context, Dog dog) => dog.name,
+    builder: (BuildContext context, String name, Widget? child) {
+      return Column(
+          children: [
+            child!,
+            Text('- name: $name', style: const TextStyle(fontSize: 20.0)),
+            ElevatedButton(
+              onPressed: () => context.read<Dog>().grow(),  child:...
+            ),
+          ],
+      );
+    },
+    child: const Text('I like dogs very much'),
+  ),
+```
+ 1. Selector<Dog, String>
+   - 첫번째 Type은 여러게의 속성을 가지고 있는 Model을 정의한다.
+   - 두번째 type은 첫번째 Type의 Model속성 중 선택할 Type을 정의한다.
+ 2. selector: (BuildContext context, Dog dog) 
+   - BuildContext와 Provided Argument를 받아서  listen하고자 하는 값을 return한다.
+ 3. builder: (BuildContext context, String name, Widget? child)
+   - 두번째 Arg는 selector의 return값(?)에 대한 data type과 value가 전달된다.
+   - 세번째 Arg는 Consumer와 동일하게 Rebuild할 필요가 없는 Widget을 지정한다.
+ 4. child! 와 Selector의 child
+   - 'I like dogs very much' 값은 계속 rebuild될 필요가 없기 때문에 Selector의 child 속성으로 이동시킨다.
+ 5. context.read<Dog>().grow()
+   - grow()는 selector에서 넘겨주는 값이 아니기 때문에 context.read를 통해서 호출 할 수 있다.
 
+### 10-5 Selector 실행화면
+ <img src="./README_images/provider_pattern_step10_Selector.png">
+   
+      
+   
+   
+      
+   
+# 11. Counter App만들기 (step11) - (ProviderNotFoundException 확인 및 보정)
+    - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 18. Chapter 18. ProviderNotFoundException 더 알아보기와 Builder widget
+    - [ [참고소스-main](./lib/step11_ProviderNotFoundException/counter.dart) ]
+    - [ [참고소스-main](./lib/step11_ProviderNotFoundException/dog_app_step11.dart) ]
 
+### 11-1 ChangeNotifier Syntax
+ 1. 크게 2가지 방법으로 개발가능하다.
+ 2. 첫번째 Syntax
+  - ChangeNotifierProvider를 먼저 선언하고, 하위 Class Widget부터 사용하기
+ ```dart
+ //provider_pattern_udemy/step4_CangeNotifierProvider/dog_app_step4.dart
+ class MyApp extends StatelessWidget {
+  ...
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider<Dog>(
+      create: (context) => Dog(name: 'dog04', breed: 'breed04'),
+      child: MaterialApp(
+        home: const MyHomePage(),
+      ),);}
+}
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold( ... ),
+      body: Text('- name: ${Provider.of<Dog>(context, listen: false).name}')
+    );}
+}
+ ```
 
+3. 두번째 Syntax
+  - ChangeNotifierProvider를 선언과 동시에 같은 Widget class에서 사용하기
+  - ChangeNotifierProvider를 선언과 동시에 같은 Widget class에서 사용하려고 하면    
+    반드시 ChangeNotifierProvider의 child: Builder(builder: (context) { ....}... 와 같이    
+    정의 하여야 한다.     
+    그렇지 않으면 오류가 발생한다.
+   
+```dart
+//정상script (Builder callback을 사용한 경우)
+class MyHomePage extends StatelessWidget {
+  ..
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ChangeNotifierProvider<Counter>(
+        create: (_) => Counter(),
+        child: Builder(
+          builder: (context) {
+            return Column(
+              children: [
+                Text('${context.watch<Counter>().counter}'),
+                ElevatedButton(
+                  child: const Text('Increment'),
+                  onPressed: () { context.read<Counter>().increment();  },
+                )
+              ],
+            );
+   ....
+}
+```  
+```dart
+//오류script (Builder callback을 사용하지 않은 경우)
+class MyHomePage extends StatelessWidget {
+  ..
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ChangeNotifierProvider<Counter>(
+        create: (_) => Counter(),
+        child: Column(
+                 children: [
+                   //이 context의 상위로 Provider.of를 찾으로 검색해보지만
+                   //Provider.of를 찾지 못해서 오류가 발생한다.
+                   Text('${context.watch<Counter>().counter}'),
+                   ElevatedButton(
+                     child: const Text('Increment'),
+                     onPressed: () { context.read<Counter>().increment();  },
+                   )
+                 ],
+               ),
+   ....
+}
+```  
+
+### 11-2  실행화면 - 생략
+   
+      
+   
+   
+      
+   
+   
+# 12. counter App만들기 (step12) - (Provider access - Anonymous route access)
+    - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 19. Chapter 19. Provider Access – Anonymous route access
+    - [ [참고소스-counter model](./lib/step12_AnonymousRouteAccess/counter.dart) ]
+    - [ [참고소스-main](./lib/step12_AnonymousRouteAccess/dog_app_step12.dart) ]
+    - [ [참고소스-두번째 화면](./lib/step12_AnonymousRouteAccess/show_me_counter.dart) ]
+
+### 12-1 Provider Access 란 
+  <img src="./README_images/provider_pattern_step12_100.png">
+
+### 12-2 Anonymous route access 개발화면 flow
+ - Anonymous route access
+ - Provider를 이용해서 다른화면과 model공유 하기
+ <img src="./README_images/provider_pattern_step12_110.png">
+
+### 12-3 Anonymous route access 주요소스
+ 1. Provider선언
+```dart
+class MyApp extends StatelessWidget {
+  ...
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: ChangeNotifierProvider<Counter>(
+        create: (context) => Counter(),
+        child: const MyHomePage(),
+      ),);}
+}
+``` 
+
+ 2. 다른 페이지로 Provider instance넘기기
+```dart
+  onPressed: () {
+    Navigator.push(
+      context,
+      //builder: (context) 로 작성하면 버튼 클릭 시 오류가 발생한다.
+      // ShowMeCounter() class에서 context를 사용할 때
+      // router에 있는 builder: (context) 가 아니기 때문이다.
+      // 그래서 사용하지 않겠다고 _ 로 처리 한다.
+      // _ 대신 counterContext로 해도 된다.
+      //MaterialPageRoute(builder: (context) {
+      MaterialPageRoute(builder: (_) {
+        return ChangeNotifierProvider.value(
+          value: context.read<Counter>(),
+          child: const ShowMeCounter(),
+        );
+      }),
+    );
+  },
+``` 
+ 3. 다른페이지에 Provider를 넘겨 받아 사용하기
+```dart
+class ShowMeCounter extends StatelessWidget {
+  ...
+  Widget build(BuildContext context) {
+    return Scaffold( ... ),
+      body: Center(
+        child: Text('${context.read<Counter>().name} = ${context.watch<Counter>().counter}',),
+      ),);}
+}
+```
+   
+      
+   
+   
+      
+   
+   
+# 13. counter App만들기 (step13) - (Provider access - Named route access)
+    - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 20. Chapter 20. Provider Access – Named route access
+    - [ [참고소스-counter model](./lib/step13_NamedRouteAccess/counter.dart) ]
+    - [ [참고소스-main](./lib/step13_NamedRouteAccess/dog_app_step13.dart) ]
+    - [ [참고소스-두번째 화면](./lib/step13_NamedRouteAccess/show_me_counter.dart) ]
+
+### 13-2 Named route access 실행화면
+ - 위 12 챕터와 화면은 동일
+  <img src="./README_images/provider_pattern_step12_110.png">
+
+### 13-3 Named route access 주요소스
+ 1. Provider instance생성 및 선언
+```dart
+class _MyAppState extends State<MyApp> {
+  final Counter _counter = Counter();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      routes: {
+        '/': (context) => ChangeNotifierProvider.value(
+              value: _counter,
+              child: const MyHomePage(),
+            ),
+        '/counter': (context) => ChangeNotifierProvider.value(
+              value: _counter,
+              child: const ShowMeCounter(),
+            ),
+      },
+    );
+  }
+
+  //ChangeNotifierProvider 정의시 create에서 Provider instance를 생성하지만
+  //Named route access방식에서는 Provider instance를 Member변수로 생성했다.
+  //이럴경우에는 자동으로 dispose되지 않기 때문에 개발자가 직접해줘야 된다.
+  @override
+  void dispose() {
+    _counter.dispose();
+    super.dispose();
+  }
+}
+```  
+ 2. 다른페이지에 Provider를 넘겨 받아 사용하기
+```dart
+class ShowMeCounter extends StatelessWidget {
+  ...
+  Widget build(BuildContext context) {
+    return Scaffold( ... ),
+      body: Center(
+        child: Text('${context.read<Counter>().name} = ${context.read<Counter>().counter}',),
+      ),);}
+}
+```
+    
+   
+      
+   
+   
+      
+   
+   
+# 14. counter App만들기 (step13) - (Provider access - Generated route access)
+    - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
+    - 21. Chapter 21. Provider Access – Generated route access, Global access
+    - [ [참고소스-counter model](./lib/step14_GeneratedRouteAccess/counter.dart) ]
+    - [ [참고소스-main](./lib/step14_GeneratedRouteAccess/dog_app_step14.dart) ]
+    - [ [참고소스-두번째 화면](./lib/step14_GeneratedRouteAccess/show_me_counter.dart) ]
+
+### 13-2 Generated route access 실행화면
+ - 위 12 챕터와 화면은 동일
+  <img src="./README_images/.png">
+
+### 13-3 Generated route access 주요소스
+ 1. Provider instance생성 및 선언
+```dart
+class _MyAppState extends State<MyApp> {
+  final Counter _counter = Counter();
+
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(
+              builder: (context) => ChangeNotifierProvider.value(
+                value: _counter,
+                child: const MyHomePage(),
+              ),
+            );
+          case '/counter':
+            return MaterialPageRoute(
+              builder: (context) => ChangeNotifierProvider.value(
+                value: _counter,
+                child: const ShowMeCounter(),
+              ),
+            );
+          default:
+            return null;
+        }},);}
+```
+ 2. 다른페이지에 Provider를 넘겨 받아 사용하기
+```dart
+class ShowMeCounter extends StatelessWidget {
+  ...
+  Widget build(BuildContext context) {
+    return Scaffold( ... ),
+      body: Center(
+        child: Text('${context.read<Counter>().name} = ${context.read<Counter>().counter}',),
+      ),);}
+}
+```
+   
+      
+   
+      
+      
+   
+   
+      
+   
+      
+      
+   
+   
+      
+   
+      
+      
+   
+   
+      
+   
+   
 
 
 

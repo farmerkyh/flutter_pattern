@@ -1,3 +1,14 @@
+# 0. 정의
+### 0-1 상태
+ 1. 상태(State)는 위젯이 빌드되는 동시에 읽을 수 있고, 위젯의 생명 주기동안 변경할 수 있는 정보를 말한다. 
+ 2. 보통 사용자와 어플의 상호작용으로 인해 변화하는 데이터들이 여기에 해당한다.
+ 3. 상태 관리가 만들어진 목적은, UI와 비즈니스 로직을 분리하기 위해서 이다.
+
+### 0-9 기타
+ 1. BloC 비하면 Provider를 이해하는데 걸린 시간은 절반도 안 된다.
+ 2. Bloc 패턴은 사용하기에 진입장벽이 높고,  불필요한 클래스를 여러 개를 만들어야 한다.
+ 3. 구글에서 Bloc 패턴이 먼저 만들어지고, 불편함을 해소하거자 Provider가 나중에 만들어 졌다.
+
 # 1. Provider
 ### 1-1 Provider Syntax
 ```dart
@@ -72,10 +83,87 @@
     - Provider type으로 정의된 instance가 변경 시 notify를 해준다.
     - Listener의 class들은 rebuild 한다.
     - 참고, `Provider 정의시 생성 프로세스쪽으로 다시 호출 되지 않는다.`
-   
+
 
 # 2. ChangeNotifier
 ### 2-1 ChangeNotifier Syntax
+ 1. 크게 2가지 방법으로 개발가능하다.
+ 2. 첫번째 Syntax
+  - ChangeNotifierProvider를 먼저 선언하고, 하위 Class Widget부터 사용하기
+ ```dart
+ //provider_pattern_udemy/step4_CangeNotifierProvider/dog_app_step4.dart
+ class MyApp extends StatelessWidget {
+  ...
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider<Dog>(
+      create: (context) => Dog(name: 'dog04', breed: 'breed04'),
+      child: MaterialApp(
+        home: const MyHomePage(),
+      ),);}
+}
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold( ... ),
+      body: Text('- name: ${Provider.of<Dog>(context, listen: false).name}')
+    );}
+}
+ ```
+
+3. 두번째 Syntax
+  - ChangeNotifierProvider를 선언과 동시에 같은 Widget class에서 사용하기
+  - ChangeNotifierProvider를 선언과 동시에 같은 Widget class에서 사용하려고 하면    
+    반드시 ChangeNotifierProvider의 child: Builder(builder: (context) { ....}... 와 같이    
+    정의 하여야 한다.     
+    그렇지 않으면 오류가 발생한다.
+   
+```dart
+//정상script (Builder callback을 사용한 경우)
+class MyHomePage extends StatelessWidget {
+  ..
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ChangeNotifierProvider<Counter>(
+        create: (_) => Counter(),
+        child: Builder(
+          builder: (context) {
+            return Column(
+              children: [
+                Text('${context.watch<Counter>().counter}'),
+                ElevatedButton(
+                  child: const Text('Increment'),
+                  onPressed: () { context.read<Counter>().increment();  },
+                )
+              ],
+            );
+   ....
+}
+```  
+```dart
+//오류script (Builder callback을 사용하지 않은 경우)
+class MyHomePage extends StatelessWidget {
+  ..
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ChangeNotifierProvider<Counter>(
+        create: (_) => Counter(),
+        child: Column(
+                 children: [
+                   //이 context의 상위로 Provider.of를 찾으로 검색해보지만
+                   //Provider.of를 찾지 못해서 오류가 발생한다.
+                   Text('${context.watch<Counter>().counter}'),
+                   ElevatedButton(
+                     child: const Text('Increment'),
+                     onPressed: () { context.read<Counter>().increment();  },
+                   )
+                 ],
+               ),
+   ....
+}
+```  
+
+
+ 1. 
 ### 2-2 ChangeNotifier 정의
 ### 2-3 ChangeNotifier 속성설명
 ### 2-4 ChangeNotifier 하위Widget(class)에서 사용문법 및 정의
@@ -104,7 +192,87 @@
 
 
 # 5. StreamProvider
-### 6-1 StreamProvider Syntax
+### 5-1 StreamProvider Syntax
+### 5-2 StreamProvider 정의
+ 1. StreamProvider는 여러번 build된다.
+    - 첫번째는 initialData를 기준으로 build된다.
+    - 두번째는 create 쪽에서 Stream값이 return될때 마다 build된다.
+ 2. StreamProvider는 Stream return value를 type으로 선언한다.    
+### 5-3 StreamProvider 속성설명
+### 5-3 StreamProvider 하위Widget(class)에서 사용문법 및 정의
+
+# 6. Route Access
+### 6-1 Anonymous Route Access
+ - /flutter_pattern/provider_pattern_udemy/step12_AnonymousRouteAccess/ 참조
+### 6-2 Named Route Access
+ - /flutter_pattern/provider_pattern_udemy/step12_AnonymousRouteAccess/ 참조
+### 6-3 Generated Route Access
+ - /flutter_pattern/provider_pattern_udemy/step12_AnonymousRouteAccess/ 참조
+### 6-4 Global Access
+ ```dart
+  return Provider<T> (
+    create: (_) => T(),
+    child: MaterialApp(..)
+  );
+ ```
+
+# 7. ProxyProvider
+### 7-1 ProxyProvider Syntax
+### 7-2 ProxyProvider 정의
+ 1. 다른 Providcer의 값을 사용할 수 있다.
+### 7-3 ProxyProvider 속성설명
+### 7-3 ProxyProvider 하위Widget(class)에서 사용문법 및 정의
+
+
+
+
+
+# ?. ????
+### ?-1 ???? Syntax
+### ?-2 ???? 정의
+### ?-3 ???? 속성설명
+### ?-3 ???? 하위Widget(class)에서 사용문법 및 정의
+
+
+
+
+
+
+
+# 90. Provider Exception
+### 1. Error내용
+ The following ProviderNotFoundException was thrown building MyHomePage(dirty):
+Error: Could not find the correct Provider<Foo> above this MyHomePage Widget    
+
+This happens because you used a `BuildContext` that does not include the
+provider of your choice. There are a few common scenarios:    
+
+ - 위 Error에 대한 3가지 시나리오
+ 1. 시나리오 : You added a new provider in your `main.dart` and performed a hot-reload.
+To fix, perform a hot-restart.
+ - 해결방법
+
+ 2. 시나리오 : The provider you are trying to read is in a different route.   
+Providers are "scoped". So if you insert of provider inside a route, then
+other routes will not be able to access that provider. 
+ - 해결방법
+
+ 3. 시나리오 : You used a `BuildContext` that is an ancestor of the provider you are trying to read.
+Make sure that MyHomePage is under your MultiProvider/Provider<Foo>.
+This usually happens when you are creating a provider and trying to read it
+immediately. 
+  - 해결방법 : 왼쪽처럼 하지 말고, 오른쪽처럼 buildr를 사용하면 된다.
+ <img src="provider_exception3_100.png">
+
+ - biilder property 메뉴얼
+   . Syntax sugar for obtaining a BuildContext that can read the provider created.
+ <img src="provider_exception3_110.png">
+
+
+### 3. 
+ - Error내용
+ - 해결방법
+
 ### 6-2 StreamProvider 정의
  1. StreamProvider는 여러번 build된다.
     - 첫번째는 initialData를 기준으로 build된다.
@@ -112,9 +280,3 @@
  2. StreamProvider는 Stream return value를 type으로 선언한다.    
 ### 6-3 StreamProvider 속성설명
 ### 6-3 StreamProvider 하위Widget(class)에서 사용문법 및 정의
-
-# ?. ????
-### ?-1 ???? Syntax
-### ?-2 ???? 정의
-### ?-3 ???? 속성설명
-### ?-3 ???? 하위Widget(class)에서 사용문법 및 정의
