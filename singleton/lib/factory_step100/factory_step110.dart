@@ -7,6 +7,7 @@ class DataStore {
   factory DataStore() {
     return _cache;
   }
+  //factory DataStore() => _cache;
 
   //또 다른 생성자로 named constructor인 DataStore._internal를 만들어 줌으로
   //외부에서는 호출이 되지 않지만
