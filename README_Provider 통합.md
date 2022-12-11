@@ -205,10 +205,10 @@ class MyHomePage extends StatelessWidget {
 ### 6-1 Anonymous Route Access
  - /flutter_pattern/provider_pattern_udemy/step12_AnonymousRouteAccess/ 참조
 ### 6-2 Named Route Access
- - /flutter_pattern/provider_pattern_udemy/step12_AnonymousRouteAccess/ 참조
+ - /flutter_pattern/provider_pattern_udemy/step13_NamedRouteAccess/ 참조
 ### 6-3 Generated Route Access
- - /flutter_pattern/provider_pattern_udemy/step12_AnonymousRouteAccess/ 참조
-### 6-4 Global Access
+ - /flutter_pattern/provider_pattern_udemy/step14_GeneratedRouteAccess/ 참조
+### 6-4 Global Route Access
  ```dart
   return Provider<T> (
     create: (_) => T(),

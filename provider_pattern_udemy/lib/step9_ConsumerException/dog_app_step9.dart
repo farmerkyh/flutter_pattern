@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ConsumerExceptionStep9());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ConsumerExceptionStep9 extends StatelessWidget {
+  const ConsumerExceptionStep9({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 import 'counter.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderNotFoundExceptionStep11());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ProviderNotFoundExceptionStep11 extends StatelessWidget {
+  const ProviderNotFoundExceptionStep11({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

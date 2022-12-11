@@ -5,11 +5,11 @@ import 'counter.dart';
 import 'show_me_counter.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const AnonymousRouteAccessStep12());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class AnonymousRouteAccessStep12 extends StatelessWidget {
+  const AnonymousRouteAccessStep12({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

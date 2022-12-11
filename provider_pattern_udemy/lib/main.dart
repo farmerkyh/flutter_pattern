@@ -1,115 +1,145 @@
 import 'package:flutter/material.dart';
+import 'package:provider_pattern_udemy/step10_Selector/dog_app_step10.dart';
+import 'package:provider_pattern_udemy/step11_ProviderNotFoundException/dog_app_step11.dart';
+import 'package:provider_pattern_udemy/step12_AnonymousRouteAccess/dog_app_step12.dart';
+import 'package:provider_pattern_udemy/step13_NamedRouteAccess/dog_app_step13.dart';
+import 'package:provider_pattern_udemy/step14_GeneratedRouteAccess/dog_app_step14.dart';
+import 'package:provider_pattern_udemy/step15_ProxyProvider/dog_app_step15.dart';
+import 'package:provider_pattern_udemy/step1_counter_app/counter_app_step1.dart';
+import 'package:provider_pattern_udemy/step2_provider/dog_app_step2.dart';
+import 'package:provider_pattern_udemy/step3_ChangeNotifier/dog_app_step3.dart';
+import 'package:provider_pattern_udemy/step4_ChangeNotifierProvider/dog_app_step4.dart';
+import 'package:provider_pattern_udemy/step5_ProviderExtensionMethod/dog_app_step5.dart';
+import 'package:provider_pattern_udemy/step6_FutureProvider/dog_app_step6.dart';
+import 'package:provider_pattern_udemy/step7_StreamProvider/dog_app_step7.dart';
+import 'package:provider_pattern_udemy/step8_Consumer/dog_app_step8.dart';
+import 'package:provider_pattern_udemy/step9_ConsumerException/dog_app_step9.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      title: 'Grid Template',
+      theme: ThemeData(primarySwatch: Colors.amber),
+      home: MyGrid(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class MyGrid extends StatelessWidget {
+  const MyGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
+      //-------------------------------------------------------
+      //1. appbar
+      //-------------------------------------------------------
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: const Text("Grid/List Template"),
+        centerTitle: true,
+        //elevation: 0.0,
+
+        actions: [
+          IconButton(
+            onPressed: () {
+              debugPrint("click");
+            },
+            icon: const Icon(Icons.shopping_cart),
+          ),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.search))
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+
+      //-------------------------------------------------------
+      //2. menu
+      //-------------------------------------------------------
+      drawer: Drawer(
+        child: ListView(
+          //padding: EdgeInsets.only(bottom: 20),
+          // ignore: prefer_const_literals_to_create_immutables
+          children: [
+            const UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('images/farmer_loop.png'),
+                backgroundColor: Colors.white,
+              ),
+              accountEmail: Text("aa@naver.com"),
+              accountName: Text("farmer"),
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 176, 211, 240),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(40.0),
+                      bottomRight: Radius.circular(40.0))),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            //ListView
+            createLeftOneMenu(context, "기본CounterApp", const CounterAppStep1()),
+            const Divider(height: 5),
+            createLeftOneMenu(context, "Provider", const ProviderStep2()),
+            createLeftOneMenu(context, "ChangeNotifierProvider",
+                const ChangeNotifierProviderStep3()),
+            createLeftOneMenu(context, "ChangeNotifierProvider",
+                const ChangeNotifierProviderStep4()),
+            createLeftOneMenu(
+                context, "ProviderExtension", const ProviderExtensionStep5()),
+            const Divider(height: 5),
+            createLeftOneMenu(
+                context, "FutureProvider", const FutureProviderStep6()),
+            createLeftOneMenu(
+                context, "treamProvider", const StreamProviderStep7()),
+            const Divider(height: 5),
+            createLeftOneMenu(context, "Consumer", const ConsumerStep8()),
+            createLeftOneMenu(
+                context, "ConsumerException", const ConsumerExceptionStep9()),
+            createLeftOneMenu(context, "Selector", const SelectorStep10()),
+            const Divider(height: 5),
+            createLeftOneMenu(context, "ProviderNotFoundException",
+                const ProviderNotFoundExceptionStep11()),
+            const Divider(height: 5),
+            createLeftOneMenu(context, "AnonymousRouteAccess",
+                const AnonymousRouteAccessStep12()),
+            createLeftOneMenu(
+                context, "NamedRouteAccess", NamedRouteAccessStep13()),
+            createLeftOneMenu(
+                context, "GeneratedRouteAccess", GeneratedRouteAccessStep14()),
+            const Divider(height: 5),
+            createLeftOneMenu(
+                context, "ProxyProvider", const ProxyProviderStep15()),
+            const Divider(height: 50),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
+      //-------------------------------------------------------
+      //3. body
+      //-------------------------------------------------------
+      body: const Center(child: Text("Grid Template 모음집 \n메뉴를 클릭 하세요.")),
+    );
+  }
+
+  //-------------------------------------------------------
+  //@class 왼쪽 메뉴 라인 생성
+  //-------------------------------------------------------
+  Widget createLeftOneMenu(BuildContext context, String menuNm, Widget page) {
+    return Center(
+      child: SizedBox(
+        height: 30,
+        child: ListTile(
+          title: Text(menuNm),
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => page));
+            //Navigator.pop(context);
+            //Route route = MaterialPageRoute(builder: (context) => ListViewStep10());
+            //Navigator.pushReplacement(context, route);
+          },
+        ),
+      ),
     );
   }
 }

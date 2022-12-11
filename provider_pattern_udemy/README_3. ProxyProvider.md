@@ -1,9 +1,9 @@
-# 15. ProxyProvider 개요
-### 15-1 강의
+# 1. ProxyProvider 개요
+### 1-1 강의
  - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
  - 22. Chapter 22. ProxyProvider 개요 1   
    23. Chapter 23. ProxyProvider 개요 2   
-### 15-1 ProxyProvider Syntax
+### 1-2 ProxyProvider Syntax
 ```dart
   ProxyProvider({
       Key? key,
@@ -28,12 +28,12 @@
     - 두번째, ProxyProvider가 의존하는 Provider의 value가 변경 될때 마다
     - 세번째, ProxyProvider가 rebuild될 때 마다
           
-### 15-2 ProxyProvider 정의
+### 1-3 ProxyProvider 정의
  1. 다른 Provider의 값을 사용할 수 있다.
  2. ProxyProvider는 다른 provider의 value에 의존한다.   
     즉, 다른 value가 변하게 되면 새로 만들어야 된다는 뜻이다.
 
-### 15-3 ProxyProvider - update
+### 1-4 ProxyProvider - update
  1. ProxyProvider 
  <img src="./README_images/provider_pattern_step15_ProxyProvider_100.png">     
 
@@ -60,11 +60,11 @@
  <img src="./README_images/provider_pattern_step15_ProxyProvider_120.png">   
 
 
- ### 15-4 ChangeNotifierProxyProvider
+ ### 1-5 ChangeNotifierProxyProvider
   - ChangeNotifierProxyProvider는 외부 ChangedNotifier와 값을 Synchronize하는 ChangeNotifierProvider이다.
   <img src="./README_images/provider_pattern_step15_ProxyProvider_130.png">   
 
- ### 15-4 ChangeNotifierProxyProvider 주의할점      
+ ### 1-6 ChangeNotifierProxyProvider 주의할점      
  <img src="./README_images/provider_pattern_step15_ProxyProvider_140.png">   
    
    
@@ -73,8 +73,8 @@
    
    
    
-# 15. ProxyProvider 
-### 15-0 강의
+# 2. ProxyProvider 
+### 2-1 강의
  - https:/www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
  - 24. Chapter 24. ProxyProvider 예제 1   
    25. Chapter 25. ProxyProvider 예제 2   
@@ -82,27 +82,33 @@
    27. Chapter 27. ProxyProvider 예제 4   
  - [ [개발소스-main 화면](./lib/step15_ProxyProvider/dog_app_step15.dart) ]
 
-
-### 15-0 ProxyProvider - Main화면
+### 2-2 ProxyProvider - Main화면
  <img src="./README_images/provider_pattern_step15_ProxyProvider_200.png">   
-  
-
-### 15-1 ProxyProvider - 1. Why ProxyProvider 버튼
- 1. 소스
+   
+   
+   
+   
+   
+   
+   
+### 3 Provider   (ProxyProvider 미사용) - (1. Why ProxyProvider 버튼)
+ - Provider사용
+ - 모델1개, funciton1개 사용
+### 3-1 소스
  - [ [개발소스-why_proxyprov 화면](./lib/step15_ProxyProvider/pages/why_proxyprov.dart) ]
 
- 2. 정의
+### 3-2 정의
  - ProxyProvider를 사용않아 2개의 Model간의 값 전달을 할 수 없다.
  - [INCREASE]버튼을 눌러도 화면에 숫자가 변경이 안됨
  - ProxyProvider를 사용하지 않아서 이다.
  
- 3. 실행화면
+### 3-3 실행화면
  <img src="./README_images/provider_pattern_step15_ProxyProvider_210.png">
 
- 4. Widget Tree
+### 3-4 Widget Tree
  <img src="./README_images/provider_pattern_step15_ProxyProvider_211.png">
 
- 5. 주요소스
+### 3-5 주요소스
  ```dart
 class Translations {
   final int _value;
@@ -149,17 +155,27 @@ class Translations {
  - Provider의 create: callback함수는 한번만 호출 된다.
  - ShowTranslations() Widget class에서 'title'을 출력 시 처음 생성당시의 값만 계속 보여주게 된다.
  - counter의 변경된 값이 Translations instance에 전달하지 못한다.
-
-### 15-2 ProxyProvider0 (update사용하고_- 2. ProxyProvider update 버튼
- 1. 소스
+   
+   
+   
+   
+   
+   
+    
+### 4 ProxyProvider0   ( 2. ProxyProvider update 버튼)
+ - ProxyProvider0, update 사용
+ - 모델1개, funciton1개 사용
+### 4-1 소스
  - [ [개발소스-화면](./lib/step15_ProxyProvider/pages/proxyprov_update.dart) ]
 
- 2. 정의
- 3. 실행화면
+ ### 4-2 정의
+  - 생략
+ ### 4-3 실행화면
  <img src="./README_images/provider_pattern_step15_ProxyProvider_220.png">   
 
- 4. Widget Tree
- 5. 주요소스
+ ### 4-4 Widget Tree
+  - 생략
+ ### 4-5 주요소스
 ```dart
 class Translations {
   final int _value;
@@ -205,19 +221,29 @@ class _ProxyProvUpdateState extends State<ProxyProvUpdate> {
  - ProxyProvider0 Widget을 사용하였다.
  - update: 속성이 다시 호출 되는 조건 중 -> `세번째, ProxyProvider가 rebuild될 때 마다` 이다.   
    setState(){} 호출이 되면서 rebuild가 된다. 이때 update: callback함수가 호출 된다.
- 
+    
+   
+   
+   
+   
+   
+   
+### 5 ProxyProvider0  ( 3. ProxyProvider create/update 버튼 )
+ - ProxyProvider0 사용
+ - create, update 사용
+ - 모델1개, funciton1개 사용
 
-
-### 15-3 ProxyProvider0 (create, update 사용하기) - 3. ProxyProvider create/update 버튼
- 1. 소스
+### 5-1 소스
  - [ [개발소스-화면](./lib/step15_ProxyProvider/pages/proxyprov_create_update.dart) ]
 
- 2. 정의
- 3. 실행화면
+### 5-2 정의
+ - 생략
+### 5-3 실행화면
  <img src="./README_images/provider_pattern_step15_ProxyProvider_230.png">
 
- 4. Widget Tree
- 5. 주요소스
+### 5-4 Widget Tree
+ - 생략
+### 5-5 주요소스
 ```dart
 class Translations {
   late int _value;
@@ -271,17 +297,28 @@ class _ProxyProvCreateUpdateState extends State<ProxyProvCreateUpdate> {
 
  - 이 방식은 좋은 방식은 아니다.
  - 다음 15-4 방식이 좋은 방식중 하나 이다.
-
-### 15-4 MultiProvider - 4. ProxyProvider ProxyProvider 버튼
- 1. 소스
+    
+    
+    
+    
+    
+    
+    
+### 6 MultiProvider  ( 4. ProxyProvider ProxyProvider 버튼 )
+ - MultiProvider, ProxyProvider0, ProxyProvider 사용
+ - update 사용
+ - 모델1개, funciton1개 사용
+### 6-1 
  - [ [개발소스-화면](./lib/step15_ProxyProvider/pages/proxyprov_proxyprov.dart) ]
 
- 2. 정의
- 3. 실행화면
+### 6-2 정의
+  - 생략
+### 6-3 실행화면
  <img src="./README_images/provider_pattern_step15_ProxyProvider_240.png">   
 
- 4. Widget Tree
- 5. 주요소스
+### 6-4 Widget Tree
+  - 생략
+### 6-5 주요소스
 ```dart
 class Translations {
   const Translations(this._value);
@@ -339,17 +376,28 @@ class _ProxyProvProxyProvState extends State<ProxyProvProxyProv> {
    . value는 변화에 의존하는 값이다.
    . ProxyProvider에서 ProxyProvider0에서 return한 counter값을  value로 받아서 Translations(value)를 생성한다.
  - MultiProvider > child: 속성의 Widget에서는 providers: 에서 생성 후 return 한 `Translations(value)`를 사용할 수 있게 된다.
-
-### 15-5 ChangeNotifierProvider - 5. ChangeNotifierProvider ChangeNotifierProxyProvider 버튼
- 1. 소스
+    
+    
+    
+    
+    
+    
+    
+     
+# 7 ChangeNotifierProvider  ( 5. ChangeNotifierProvider ChangeNotifierProxyProvider 버튼 )
+ - MultiProvider, ChangeNotifierProvider, ChangeNotifierProxyProvider 사용
+ - create, update 사용
+ - 모델2개 사용
+### 7-1 소스
  - [ [개발소스-화면](./lib/step15_ProxyProvider/pages/chgnotiprov_chgnotiproxyprov
 .dart) ]
- 2. 정의
- 3. 실행화면
+### 7-2 정의
+ - 생략
+### 7-3 실행화면
  <img src="./README_images/provider_pattern_step15_ProxyProvider_250.png">   
 
- 4. Widget Tree
- 5. 주요소스
+### 7-4 Widget Tree
+### 7-5 주요소스
 ```dart
 class Counter with ChangeNotifier {
   int counter = 0;
@@ -424,22 +472,28 @@ class IncreaseButton extends StatelessWidget {
       child: Text( 'INCREASE' ), ); }
 }
 ```
-
- - 
- - 
- - 
- - 
- - 
-
-### 15-6 ProxyProvider - 6. ChangeNotifierProvider ProxyProvider 버튼
- 1. 소스
+    
+    
+    
+    
+    
+    
+    
+     
+# 8 ProxyProvider ( 6. ChangeNotifierProvider ProxyProvider 버튼 )
+ - MultiProvider, ChangeNotifierProvider, ProxyProvider 사용
+ - create, update 사용
+ - 모델2개 사용
+### 8-1 소스
  - [ [개발소스-화면](./lib/step15_ProxyProvider/pages/chgnotiprov_proxyprov.dart) ]
- 2. 정의
- 3. 실행화면
+### 8-2 정의
+ - 생략
+### 8-3 실행화면
  <img src="./README_images/provider_pattern_step15_ProxyProvider_260.png">   
 
- 4. Widget Tree
- 5. 주요소스
+### 8-4 Widget Tree
+ - 생략
+### 8-5 주요소스
 ```dart
 class Counter with ChangeNotifier {
   int counter = 0;
@@ -506,20 +560,7 @@ class IncreaseButton extends StatelessWidget {
    
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+     
    
    
    

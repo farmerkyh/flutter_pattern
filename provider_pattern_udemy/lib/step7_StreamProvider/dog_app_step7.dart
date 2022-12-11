@@ -5,11 +5,11 @@ import 'models/babies.dart';
 import 'models/dog.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const StreamProviderStep7());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class StreamProviderStep7 extends StatelessWidget {
+  const StreamProviderStep7({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('                [ MyHomePage class ]                ', style: TextStyle(fontSize: 20.0)),
-              Text('1. name: ${context.watch<Dog>().name}', style: const TextStyle(fontSize: 20.0)),
+              const Text('                [ MyHomePage class ]                ',
+                  style: TextStyle(fontSize: 20.0)),
+              Text('1. name: ${context.watch<Dog>().name}',
+                  style: const TextStyle(fontSize: 20.0)),
               const SizedBox(height: 10.0),
               const BreedAndAge(),
             ],
@@ -92,8 +94,10 @@ class BreedAndAge extends StatelessWidget {
       color: Colors.blue[100],
       child: Column(
         children: [
-          const Text('           [ BreedAndAge class ]           ', style: TextStyle(fontSize: 20.0)),
-          Text('2. breed: ${context.select<Dog, String>((Dog dog) => dog.breed)}',
+          const Text('           [ BreedAndAge class ]           ',
+              style: TextStyle(fontSize: 20.0)),
+          Text(
+              '2. breed: ${context.select<Dog, String>((Dog dog) => dog.breed)}',
               style: const TextStyle(fontSize: 20.0)),
           const SizedBox(height: 10.0),
           const Age(),
@@ -114,14 +118,19 @@ class Age extends StatelessWidget {
       color: Colors.red[100],
       child: Column(
         children: [
-          const Text('           [ Age class ]           ', style: TextStyle(fontSize: 20.0)),
-          Text('3. age (select): ${context.select<Dog, int>((Dog dog) => dog.age)}',
+          const Text('           [ Age class ]           ',
+              style: TextStyle(fontSize: 20.0)),
+          Text(
+              '3. age (select): ${context.select<Dog, int>((Dog dog) => dog.age)}',
               style: const TextStyle(fontSize: 20.0)),
           const SizedBox(height: 10.0),
-          Text('4. number of babies (read): ${context.read<int>()}', style: const TextStyle(fontSize: 20.0)),
+          Text('4. number of babies (read): ${context.read<int>()}',
+              style: const TextStyle(fontSize: 20.0)),
           const SizedBox(height: 10.0),
-          Text('5. (watch) ${context.watch<String>()}', style: const TextStyle(fontSize: 20.0)),
-          Text('6. (read) ${context.read<String>()}', style: const TextStyle(fontSize: 20.0)),
+          Text('5. (watch) ${context.watch<String>()}',
+              style: const TextStyle(fontSize: 20.0)),
+          Text('6. (read) ${context.read<String>()}',
+              style: const TextStyle(fontSize: 20.0)),
           const SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () => context.read<Dog>().grow(),

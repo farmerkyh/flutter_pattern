@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 import 'models/dog.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderExtensionStep5());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ProviderExtensionStep5 extends StatelessWidget {
+  const ProviderExtensionStep5({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

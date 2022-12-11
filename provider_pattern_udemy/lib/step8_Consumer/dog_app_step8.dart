@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 import 'models/dog.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ConsumerStep8());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ConsumerStep8 extends StatelessWidget {
+  const ConsumerStep8({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +57,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(height: 10.0),
                 //dog.name으로 할 수 있는 이유는
                 //  - Consumer > builder (Dog dog)와 같이 arg로 넘어 오기 때문이다.
-                Text('- name: ${dog.name}', style: const TextStyle(fontSize: 20.0)),
+                Text('- name: ${dog.name}',
+                    style: const TextStyle(fontSize: 20.0)),
                 const SizedBox(height: 10.0),
                 const BreedAndAge(),
               ],
             ),
           );
         },
-        child: const Text('I like dogs very much', style: TextStyle(fontSize: 20.0)),
+        child: const Text('I like dogs very much',
+            style: TextStyle(fontSize: 20.0)),
       ),
     );
   }
@@ -84,7 +86,8 @@ class BreedAndAge extends StatelessWidget {
       builder: (_, Dog dog, __) {
         return Column(
           children: [
-            Text('- breed: ${dog.breed}', style: const TextStyle(fontSize: 20.0)),
+            Text('- breed: ${dog.breed}',
+                style: const TextStyle(fontSize: 20.0)),
             const SizedBox(height: 10.0),
             const Age(),
           ],

@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 import 'models/dog.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderStep2());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ProviderStep2 extends StatelessWidget {
+  const ProviderStep2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,8 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('- name: ${Provider.of<Dog>(context).name}', style: const TextStyle(fontSize: 20.0)),
+            Text('- name: ${Provider.of<Dog>(context).name}',
+                style: const TextStyle(fontSize: 20.0)),
             const SizedBox(height: 10.0),
             const BreedAndAge(),
           ],
@@ -56,7 +57,8 @@ class BreedAndAge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('- breed: ${Provider.of<Dog>(context).breed}', style: const TextStyle(fontSize: 20.0)),
+        Text('- breed: ${Provider.of<Dog>(context).breed}',
+            style: const TextStyle(fontSize: 20.0)),
         const SizedBox(height: 10.0),
         const Age(),
       ],

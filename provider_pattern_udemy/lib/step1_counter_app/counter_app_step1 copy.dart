@@ -4,14 +4,30 @@ void main() {
   runApp(const CounterAppStep1());
 }
 
-class CounterAppStep1 extends StatefulWidget {
+class CounterAppStep1 extends StatelessWidget {
   const CounterAppStep1({Key? key}) : super(key: key);
 
   @override
-  State<CounterAppStep1> createState() => _CounterAppStep1State();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Counter',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
 }
 
-class _CounterAppStep1State extends State<CounterAppStep1> {
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   int counter = 0;
 
   void increment() {

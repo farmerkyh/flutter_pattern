@@ -209,13 +209,13 @@ class MyApp extends StatelessWidget {
  0. 강의
     - https://www.udemy.com/ > Flutter Provider Essential 코스 (Korean)  
     - 10. Chapter 10. ChangeNotifierProvider
-    - [ [개발소스 - dog Model](./lib/step4_CangeNotifierProvider/models/dog.dart) ]
-    - [ [개발소스 - Main](./lib/step4_CangeNotifierProvider/dog_app_step4.dart) ]
+    - [ [개발소스 - dog Model](./lib/step4_ChangeNotifierProvider/models/dog.dart) ]
+    - [ [개발소스 - Main](./lib/step4_ChangeNotifierProvider/dog_app_step4.dart) ]
 
 ### 4-1. 작동과정
  - 첫번째, ChangeNotifier의 인스턴스를 만든다.
  - 두번째, ChangeNotifier를 필요로하는 Widget에 ChangeNotifier를 쉽게 access할 수 있는 수단을 제공하고 필요하면 UI를 rebild한다.
- <img src="./README_images/provider_pattern_step4_CangeNotifierProvider_100.png">
+ <img src="./README_images/provider_pattern_step4_ChangeNotifierProvider_100.png">
 
 ### 4-2. 추가 작동과정 상세내용
  - 첫번째, ChangeNotifier의 인스턴스를 만든다.
@@ -226,7 +226,7 @@ class MyApp extends StatelessWidget {
    * type T의 instance를 access할 때 2가지 방법으로 access할 수 있다.
      1. Provide.of<T>(context)를 통해서는 type T의  ChangeNotifier instance의 변화를 listen해서 변화가 있으면 UI를 rebuild할 수 있다.
      2. Provide.of<T>(context, listen:false) 를 통해서는 ChangeNotifier instance를 access만 하고, 변화를 listen하지 않는다. 즉, 해당 UI를 rebuild하지 않는다.
- <img src="./README_images/provider_pattern_step4_CangeNotifierProvider_110.png">
+ <img src="./README_images/provider_pattern_step4_ChangeNotifierProvider_110.png">
 
 ### 4-3. ChangeNotifierProvider 개발 진행 과정
  1. Dog Model
@@ -598,7 +598,7 @@ class MyApp extends StatelessWidget {
  2. 첫번째 Syntax
   - ChangeNotifierProvider를 먼저 선언하고, 하위 Class Widget부터 사용하기
  ```dart
- //provider_pattern_udemy/step4_CangeNotifierProvider/dog_app_step4.dart
+ //provider_pattern_udemy/step4_ChangeNotifierProvider/dog_app_step4.dart
  class MyApp extends StatelessWidget {
   ...
   Widget build(BuildContext context) {

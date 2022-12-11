@@ -5,17 +5,19 @@ import 'counter.dart';
 import 'show_me_counter.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(GeneratedRouteAccessStep14());
 }
 
-class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+class GeneratedRouteAccessStep14 extends StatefulWidget {
+  GeneratedRouteAccessStep14({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<GeneratedRouteAccessStep14> createState() =>
+      _GeneratedRouteAccessStep14State();
 }
 
-class _MyAppState extends State<MyApp> {
+class _GeneratedRouteAccessStep14State
+    extends State<GeneratedRouteAccessStep14> {
   final Counter _counter = Counter();
 
   @override

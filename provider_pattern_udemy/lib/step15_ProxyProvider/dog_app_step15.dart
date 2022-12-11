@@ -8,27 +8,11 @@ import 'pages/proxyprov_update.dart';
 import 'pages/why_proxyprov.dart';
 
 void main() {
-  runApp(const ProxyProvider15());
+  runApp(const ProxyProviderStep15());
 }
 
-class ProxyProvider15 extends StatelessWidget {
-  const ProxyProvider15({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'ProxyProvider Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class ProxyProviderStep15 extends StatelessWidget {
+  const ProxyProviderStep15({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

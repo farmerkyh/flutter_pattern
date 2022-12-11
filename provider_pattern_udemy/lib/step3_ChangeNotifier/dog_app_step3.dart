@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../step3_changeNotifier/models/dog.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ChangeNotifierProviderStep3());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ChangeNotifierProviderStep3 extends StatelessWidget {
+  const ChangeNotifierProviderStep3({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
