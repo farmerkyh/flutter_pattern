@@ -6,30 +6,16 @@ void main() {
   runApp(const ChangeNotifierProviderStep3());
 }
 
-class ChangeNotifierProviderStep3 extends StatelessWidget {
+class ChangeNotifierProviderStep3 extends StatefulWidget {
   const ChangeNotifierProviderStep3({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Provider 03',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
+  State<ChangeNotifierProviderStep3> createState() =>
+      _ChangeNotifierProviderStep3State();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _ChangeNotifierProviderStep3State
+    extends State<ChangeNotifierProviderStep3> {
   final dog = Dog(name: 'dog03', breed: 'breed03');
 
   @override

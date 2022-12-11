@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'pages/chgnotiprov_chgnotiproxyprov.dart';
 import 'pages/chgnotiprov_proxyprov.dart';
 import 'pages/proxyprov_create_update.dart';
@@ -17,6 +16,7 @@ class ProxyProviderStep15 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('ProxyProviderStep15')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30.0),

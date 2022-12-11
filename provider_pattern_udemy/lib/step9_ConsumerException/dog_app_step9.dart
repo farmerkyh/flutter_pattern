@@ -5,22 +5,6 @@ void main() {
   runApp(const ConsumerExceptionStep9());
 }
 
-class ConsumerExceptionStep9 extends StatelessWidget {
-  const ConsumerExceptionStep9({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Provider 09',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
 class Foo with ChangeNotifier {
   String value = 'Foo';
 
@@ -30,8 +14,8 @@ class Foo with ChangeNotifier {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class ConsumerExceptionStep9 extends StatelessWidget {
+  const ConsumerExceptionStep9({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
