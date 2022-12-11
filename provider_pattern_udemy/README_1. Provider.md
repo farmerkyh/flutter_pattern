@@ -507,7 +507,6 @@ class MyApp extends StatelessWidget {
     - [ [개발소스-main](./lib/step9_ConsumerException/dog_app_step9.dart) ]
 
 ### 9-2 
-  - 소스를 만든 이유를 모르겠음.
   - 이해 안가서 skip
    
    
