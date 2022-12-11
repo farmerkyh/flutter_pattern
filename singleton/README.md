@@ -11,29 +11,29 @@
  3. instance를 return해주는 method를 구현한다.
 
 ### 1-3 Singleton Syntax
-  ```dart
-  class Singleton {
-    // private constructor
-    Singleton._();
-    // the one and only instance of this singleton
-    static final instance = Singleton._();
-  }
-  ```
-
-  ```dart
-  class Singleton {
-    // Private한 생성자 생성
-    Singleton._privateConstructor();
-
-    // 생성자를 호출하고 반환된 Singleton 인스턴스를 _instance 변수에 할당
-    static final Singleton _instance = Singleton._privateConstructor();
-
-    // Singleton() 호출시에 _instance 변수를 반환
-    factory Singleton() {
-      return _instance;
+    ```dart
+    class Singleton {
+      // private constructor
+      Singleton._();
+      // the one and only instance of this singleton
+      static final instance = Singleton._();
     }
-  }
-  ```
+    ```
+
+    ```dart
+    class Singleton {
+      // Private한 생성자 생성
+      Singleton._privateConstructor();
+
+      // 생성자를 호출하고 반환된 Singleton 인스턴스를 _instance 변수에 할당
+      static final Singleton _instance = Singleton._privateConstructor();
+
+      // Singleton() 호출시에 _instance 변수를 반환
+      factory Singleton() {
+        return _instance;
+      }
+    }
+    ```
 
 ### 1-4 Singleton Syntax 설명
  1. static   
