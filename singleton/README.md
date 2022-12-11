@@ -9,7 +9,7 @@
 ### 1-3 단점
  1. 테스트하기가 어렵다.
 
-### 1-2 구현방법
+### 1-4 구현방법
  1. class의 static(정적) member변수를 선언 후 instance를 할당해준다.
  2. 생성자에 대한 접근을 제한한다.
  3. instance를 return해주는 method를 구현한다.
@@ -75,6 +75,13 @@
       * 이를 막기위해 Private한 생성자를 만들어줘서 자동으로 만들어주는 생성자가 생성 되지 않도록 방지하는 것이다.
       * Dart에서 언더바(‘_’) 를 붙이게 되면 Private을 의미한다.
 
+# 3. 개발 소스
+ - [소스 1](./lib/singleton_step100/singleton_step100.dart)
+ - [소스 2](./lib/singleton_step100/singleton_step110.dart)
+
+
+
+
 # 다음공부 과제
  named factory
  named generative
@@ -82,7 +89,7 @@
    - https://roseline.oopy.io/dev/flutter-tips/what-is-factory
    - https://another-light.tistory.com/77
    - https://medium.com/nerd-for-tech/named-constructor-vs-factory-constructor-in-dart-ba28250b2747
-   https://www.youtube.com/watch?v=ICaYCojSPko
+
 
 
 # 9. 참고URL
