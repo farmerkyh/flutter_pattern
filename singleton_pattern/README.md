@@ -15,7 +15,7 @@
  3. instance를 return해주는 method를 구현한다.
 
 # 2. Singleton Syntax
-    ```dart
+  ```dart
   class Singleton {
     // Private한 생성자 생성
     Singleton._privateConstructor();
