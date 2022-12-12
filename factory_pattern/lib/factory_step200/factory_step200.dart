@@ -1,3 +1,6 @@
+/*
+  - factory 패턴을 사용하지 않은 소스
+*/
 class Logger {
   final String name;
   Logger(this.name) {
