@@ -26,3 +26,9 @@
 named constructor
  - 생성자이지만 객체이름하고 다른이름을 부여할 수 있다.
 
+
+# 9. 참조자료
+ - https://sudarlife.tistory.com/entry/플러터다트-팩토리Factory-패턴-예제로-정복하기
+
+ - https://www.youtube.com/watch?v=ZikfiBnFMk8
+ - https://www.youtube.com/watch?v=TqweC5KIrb4
