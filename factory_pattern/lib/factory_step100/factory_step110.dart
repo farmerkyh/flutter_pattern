@@ -1,5 +1,5 @@
 //   https://www.youtube.com/watch?v=ICaYCojSPko
-
+import 'package:flutter/material.dart';
 /*
    @ factory pattern을 사용한 소스
 */
@@ -9,7 +9,6 @@ enum PizzaType { HanMushroom, Deluxe, Seafood }
 abstract class Pizza {
   double getPrice();
 
-  //
   //static pizzaFactory(Map<String, dynamic> json) {
   factory Pizza.fromJson(Map<String, dynamic> json) {
     switch (json['type'] as PizzaType) {
